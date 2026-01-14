@@ -1,10 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>RS Games</title>
+  <meta charset="UTF-8">
+  <title>GameVerse</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px;
+    }
+
+    header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 18px;
+      opacity: 0.8;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 0 20px cyan;
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      margin: 10px 0;
+    }
+
+    .play-btn {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      background: cyan;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .play-btn:hover {
+      background: white;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      opacity: 0.6;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Welcome to RS Games 🎮</h1>
-  <p>This is my first game website.</p>
+
+<header>
+  <h1>🎮 GameVerse</h1>
+  <p>Play simple & fun games made by me</p>
+</header>
+
+<section class="games">
+
+  <div class="card">
+    <img src="images/game1.png" alt="Game 1">
+    <h3>Space Shooter</h3>
+    <button class="play-btn">Play</button>
+  </div>
+
+  <div class="card">
+    <img src="images/game2.png" alt="Game 2">
+    <h3>Car Racing</h3>
+    <button class="play-btn">Play</button>
+  </div>
+
+  <div class="card">
+    <img src="images/game3.png" alt="Game 3">
+    <h3>Puzzle Game</h3>
+    <button class="play-btn">Play</button>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 Rohit | All games created by me
+</footer>
+
 </body>
 </html>
