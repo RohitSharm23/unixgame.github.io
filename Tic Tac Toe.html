@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe - Player vs Computer</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: #f0f0f0; }
+        #board { display: grid; grid-template-columns: repeat(3, 100px); gap: 5px; margin: 20px auto; }
+        .cell { width: 100px; height: 100px; background: white; border: 3px solid #333; font-size: 40px; cursor: pointer; }
+        .cell:hover { background: #e0e0e0; }
+        #status { font-size: 24px; margin: 20px; }
+        button { padding: 10px 20px; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <div id="status">Your turn (X)</div>
+    <div id="board"></div>
+    <button onclick="resetGame()">New Game</button>
+
+    <script>
+        let board = ['', '', '', '', '', '', '', '', ''];
+        let currentPlayer = 'X';
+        let gameActive = true;
+        const status = document.getElementById('status');
+        const boardEl = document.getElementById('board');
+
+        function initBoard() {
+            boardEl.innerHTML = '';
+            board.forEach((_, index) => {
+                const cell = document.createElement('div');
+                cell.classList.add('cell');
+                cell.addEventListener('click', () => handleCellClick(index));
+                boardEl.appendChild(cell);
+            });
+        }
+
+        function handleCellClick(index) {
+            if (board[index] !== '' || !gameActive || currentPlayer !== 'X') return;
+            board[index] = 'X';
+            updateBoard();
+            if (checkWin()) return;
+            currentPlayer = 'O';
+            status.textContent = "Computer's turn (O)";
+            setTimeout(computerMove, 500);
+        }
+
+        function computerMove() {
+            let available = board.map((v, i) => v === '' ? i : null).filter(v => v !== null);
+            if (available.length === 0) return;
+            // Simple AI: Check for win, block win, else random
+            let move = available.find(i => checkWinFor(board, i, 'O'));
+            if (!move) move = available.find(i => checkWinFor(board, i, 'X'));
+            if (!move) move = available[Math.floor(Math.random() * available.length)];
+            board[move] = 'O';
+            updateBoard();
+            currentPlayer = 'X';
+            status.textContent = "Your turn (X)";
+            if (checkWin()) return;
+            if (!board.includes('')) endGame('Tie!');
+        }
+
+        function checkWinFor(b, pos, player) {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            const temp = [...b];
+            temp[pos] = player;
+            return wins.some(line => line.every(i => temp[i] === player));
+        }
+
+        function checkWin() {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            for (let line of wins) {
+                const [a,b,c] = line;
+                if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+                    endGame(`${board[a]} wins!`);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function endGame(message) {
+            gameActive = false;
+            status.textContent = message;
+        }
+
+        function updateBoard() {
+            board.forEach((value, index) => {
+                boardEl.children[index].textContent = value;
+            });
+        }
+
+        function resetGame() {
+            board = ['', '', '', '', '', '', '', '', ''];
+            currentPlayer = 'X';
+            gameActive = true;
+            status.textContent = "Your turn (X)";
+            initBoard();
+        }
+
+        initBoard();
+    </script>
+</body>
+</html>
