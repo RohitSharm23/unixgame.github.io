@@ -1,102 +1,72 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>GameVerse</title>
-
+  <title>RS Games</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
-    }
-
-    header {
       text-align: center;
-      padding: 40px;
     }
 
-    header h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 18px;
-      opacity: 0.8;
+    h1 {
+      padding: 20px;
+      font-size: 40px;
     }
 
     .games {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      padding: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
 
     .card {
       background: rgba(255,255,255,0.1);
       border-radius: 15px;
-      padding: 20px;
-      text-align: center;
+      padding: 15px;
       transition: 0.3s;
-      cursor: pointer;
     }
 
     .card:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
       background: rgba(255,255,255,0.2);
-      box-shadow: 0 0 20px cyan;
     }
 
-    .card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin-bottom: 15px;
-    }
-
-    .card h3 {
-      margin: 10px 0;
-    }
-
-    .play-btn {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background: cyan;
-      color: black;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .play-btn:hover {
-      background: white;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      opacity: 0.6;
+    img {
+      width: 80px;
+      height: 80px;
     }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>🎮 GameVerse</h1>
-  <p>Play simple & fun games made by me</p>
-</header>
+<h1>🎮 RS Games</h1>
 
-<section class="games">
+<div class="games">
+  <div class="card">
+    <img src="https://img.icons8.com/color/96/pubg.png">
+    <p>PUBG</p>
+  </div>
 
   <div class="card">
-    <img src="images/game1.png" alt="Game 1">
-    <h3>Space Shooter</h3>
-    <button class="play-bd by me
-</footer>
+    <img src="https://img.icons8.com/color/96/free-fire.png">
+    <p>Free Fire</p>
+  </div>
+
+  <div class="card">
+    <img src="https://img.icons8.com/color/96/minecraft.png">
+    <p>Minecraft</p>
+  </div>
+
+  <div class="card">
+    <img src="https://img.icons8.com/color/96/gta-5.png">
+    <p>GTA 5</p>
+  </div>
+</div>
 
 </body>
 </html>
