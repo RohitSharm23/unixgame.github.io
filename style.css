@@ -1,0 +1,19 @@
+body {
+  font-family: Arial;
+  background: #111;
+  color: white;
+  text-align: center;
+}
+
+nav a {
+  margin: 10px;
+  color: cyan;
+  text-decoration: none;
+}
+
+.game-card {
+  background: #222;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
