@@ -1,77 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Ton Gamers</title>
-<!--Google Search Console verification-->
- <meta name="google-site-verification" content="DxqkM0zU83QORNftuH18pflQQOfqX-ah_BSl9XQm2Qc" />
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
-  text-align: center;
-}
-
-h1 {
-  padding: 20px;
-}
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.game-card {
-  background: rgba(255,255,255,0.1);
-  border-radius: 15px;
-  padding: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.game-card:hover {
-  transform: scale(1.1);
-  background: rgba(255,255,255,0.25);
-}
-
-.game-card img {
-  width: 80px;
-  height: 80px;
-}
-
-.game-card p {
-  margin-top: 10px;
-  font-size: 16px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Tom Gamer – Play Free Online Games</title>
+  <meta name="description" content="Play free online games like Tic Tac Toe. No download required. Simple browser games.">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>🎮 Ton Gamers</h1>
+<header>
+  <h1>🎮 Tom Gamer</h1>
+  <p>Play Free Online Games – No Download Required</p>
+</header>
 
-<div class="games">
+<nav>
+  <a href="index.html">Home</a>
+  <a href="games.html">Games</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <div class="games card" onclick="location.href='Tic Tac Toe.html'">
-    <img src=""C:\Users\Rohit Sharma\OneDrive\Pictures\Screenshots\TIc Tac Toe.png.png"">
-    <p>TicTacToe game</p>
+<section>
+  <h2>Featured Games</h2>
+
+  <div class="game-card">
+    <h3>Tic Tac Toe</h3>
+    <p>A simple logic game you can play online.</p>
+    <a href="tic-tac-toe.html">Play Now</a>
   </div>
 
   <div class="game-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/743/743131.png">
-    <p>Coming Soon</p>
+    <h3>Car Game</h3>
+    <p>Coming soon…</p>
   </div>
+</section>
 
-  <div class="game-card">
-    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
-    <p>Coming Soon</p>
-  </div>
-
-</div>
+<footer>
+  <p>© 2026 Tom Gamer</p>
+</footer>
 
 </body>
 </html>
