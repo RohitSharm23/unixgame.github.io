@@ -1,338 +1,433 @@
-+<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unixgame - Free Online Game Platform</title>
-    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/RohitSharm23/unixgame.github.io/666689b66a0ac6e9f2dee512c11172fd1578257f/Screenshot%202026-01-30%20175530.png">
-
+    <title>Unixgame- Play free online Games</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Arial', sans-serif;
-            background: #000;
-            color: #fff;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 75%, #ff9ff3 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Header */
-        header {
-            background: rgba(0,0,0,0.98);
-            padding: 0.8rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            border-bottom: 2px solid #00ff88;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
-        nav {
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 2%;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
+
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 10px rgba(0,255,136,0.7);
-        }
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        .nav-links a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-        }
-        .nav-links a:hover {
-            color: #00ff88;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Auth Section */
-        .auth-section {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            min-width: 220px;
-        }
-        .auth-btn {
-            flex: 1;
-            background: linear-gradient(135deg, #00ff88, #00ccff); /* bright gradient */
-            color: #fff; /* white text */
-            padding: 0.6rem 1rem;
-            border: none;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.85rem;
+        .hamburger {
+            display: none;
+            flex-direction: column;
             cursor: pointer;
-            text-decoration: none;
-            text-align: center;
-            transition: all 0.3s;
-            box-shadow: 0 3px 15px rgba(0,255,136,0.5);
-        }
-        .auth-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 25px rgba(0,255,136,0.7);
+            gap: 4px;
         }
 
-        /* Hero */
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #ff6b6b;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .btn-auth {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: 2px solid #ff6b6b;
+        }
+
+        .btn-auth:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
         .hero {
             height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, rgba(0,255,136,0.1) 0%, rgba(0,204,255,0.05) 100%);
-            padding-top: 70px;
-        }
-        .hero-content h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            margin-bottom: 1rem;
-            color: #fff;
-            text-shadow: 0 0 20px rgba(0,255,136,0.5);
-        }
-        .hero-content p {
-            font-size: clamp(1.1rem, 4vw, 1.6rem);
-            margin-bottom: 2.5rem;
-            color: #ddd;
-            max-width: 90%;
-            font-weight: 300;
-        }
-        .main-btn {
-            background: linear-gradient(45deg, #00ff88, #00ccff);
-            color: #fff;
-            padding: 1.5rem 3rem;
-            border: none;
-            border-radius: 50px;
-            font-size: clamp(1.1rem, 4vw, 1.5rem);
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 15px 40px rgba(0,255,136,0.4);
-            transition: all 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .main-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0,255,136,0.6);
+            padding: 0 1rem;
+            position: relative;
         }
 
-        /* Footer */
-        footer {
-            background: rgba(5,5,5,0.98);
-            padding: 3rem 0 1.5rem;
-            border-top: 3px solid #00ff88;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #4ecdc4, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-        .footer-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(255,255,255,0.8)); }
+            to { filter: drop-shadow(0 0 20px rgba(78,205,196,0.8)); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
+            opacity: 0.95;
+            max-width: 90%;
+            line-height: 1.4;
+        }
+
+        .play-btn {
+            font-size: 1.3rem;
+            padding: 1rem 2.5rem;
+            margin: 1rem 0;
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
+            color: white;
+            box-shadow: 0 15px 30px rgba(78, 205, 196, 0.4);
+            border-radius: 50px;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.6);
+        }
+
+        .features {
+            display: flex;
             gap: 1.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
         }
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #00ff88;
-            text-shadow: 0 0 15px rgba(0,255,136,0.7);
+
+        .feature {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.2rem 1.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+            min-width: 140px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature h3 {
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        .shape:nth-child(1) { 
+            width: 80px; 
+            height: 80px; 
+            background: rgba(255,107,107,0.4); 
+            top: 20%; 
+            left: 10%; 
+            animation-delay: 0s; 
+        }
+        
+        .shape:nth-child(2) { 
+            width: 120px; 
+            height: 120px; 
+            background: rgba(78,205,196,0.4); 
+            top: 60%; 
+            right: 10%; 
+            animation-delay: 5s; 
+        }
+        
+        .shape:nth-child(3) { 
+            width: 60px; 
+            height: 60px; 
+            background: rgba(255,159,243,0.4); 
+            bottom: 20%; 
+            left: 20%; 
+            animation-delay: 10s; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(180deg); }
+        }
+
+        .developers-section {
+            background: rgba(255, 255, 255, 0.95);
+            margin: 4rem 2% 2rem;
+            padding: 3rem 2rem;
+            border-radius: 30px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .developers-section h2 {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .developers-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 15px 40px rgba(255,107,107,0.4);
+            transition: all 0.3s;
+        }
+
+        .developers-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255,107,107,0.6);
+        }
+
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem 2%;
+            text-align: center;
+            color: #333;
+        }
+
         .footer-links {
             display: flex;
-            gap: 2rem;
-            list-style: none;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
             flex-wrap: wrap;
         }
+
         .footer-links a {
-            color: #aaa;
+            color: #ff6b6b;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-        }
-        .footer-links a:hover {
-            color: #00ff88;
-        }
-        .footer-bottom {
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(0,255,136,0.3);
-            color: #888;
-            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
         }
 
-        /* Mobile */
+        .footer-links a:hover {
+            background: rgba(255,107,107,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .hamburger {
+                display: flex;
+            }
+            
+            .auth-buttons {
                 display: none;
             }
-            .logo {
-                font-size: 1.5rem;
-            }
-            .auth-section {
-                gap: 0.4rem;
-                min-width: auto;
-            }
-            .auth-btn {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.8rem;
-                flex: 1;
-                min-width: 70px;
-            }
-            .hero {
-                padding-top: 65px;
-            }
-            .footer-top {
+            
+            .auth-buttons.mobile-active {
+                display: flex;
                 flex-direction: column;
-                text-align: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                padding: 1rem 2%;
+                gap: 1rem;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .features {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .feature {
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .developers-section {
+                margin: 2rem 1% 1rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            .developers-section h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .footer-links a {
+                display: block;
+                width: 200px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .play-btn {
+                font-size: 1.1rem;
+                padding: 0.9rem 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">Unixgame</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-            </ul>
-            <div class="auth-section">
-                <a href="login.html" class="auth-btn">Login</a>
-                <a href="signup.html" class="auth-btn">Sign Up</a>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hero Section</title>
-
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-}
-
-/* HERO */
-.hero{
-    position:relative;
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:20px;
-    overflow:hidden;
-}
-
-/* Background Image */
-.hero img{
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:-2;
-}
-
-/* Dark Overlay */
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.6);
-    z-index:-1;
-}
-
-/* Content */
-.hero-content{
-    color:white;
-    max-width:700px;
-}
-
-.hero-content h1{
-    font-size:clamp(28px,5vw,60px);
-    margin-bottom:10px;
-}
-
-.hero-content p{
-    font-size:clamp(14px,3vw,22px);
-    color:#ddd;
-    margin-bottom:25px;
-}
-
-.hero-content button{
-    padding:14px 36px;
-    font-size:16px;
-    background:#ff004f;
-    color:white;
-    border:none;
-    border-radius:30px;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.hero-content button:hover{
-    background:#ff2b6a;
-    transform:scale(1.05);
-}
-</style>
-</head>
-
-<body>
-
-<section class="hero">
-    <img src="https://github.com/RohitSharm23/unixgame.github.io/blob/main/Screenshot%202026-01-31%20180125.png?raw=true" loading="lazy">
-
-    <div class="hero-content">
-        <h1>Welcome to UnixGame</h1>
-        <p>Where Gamers Become Legends</p>
-      <a href="games.html" class="main-btn">▶ Play Now</a>
-
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
     </div>
-</section>
 
-</body>
-</html>
+    <nav class="navbar">
+        <div class="logo">Unixgame</div>
+        
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="auth-buttons" id="authButtons">
+            <a href="login" class="btn btn-auth">Login</a>
+            <a href="signup.html" class="btn btn-auth">Sign Up</a>
+        </div>
+    </nav>
 
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-logo">Unixgame</div>
-                <ul class="footer-links">
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">Support</a></li>
-                </ul>
+    <section class="hero">
+        <h1>Ready to Play?</h1>
+        <p class="hero-subtitle">Join millions of gamers worldwide</p>
+        <a href="games.html" class="btn play-btn">▶ PLAY NOW</a>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>⚡ Instant Play</h3>
+                <p>No downloads required</p>
             </div>
-            <div class="footer-bottom">
-                <p>© 2026 UNIXgames. | support@unixgame.com</p>
+            <div class="feature">
+                <h3>👥 Multiplayer</h3>
+                <p>Challenge friends worldwide</p>
+            </div>
+            <div class="feature">
+                <h3>🏆 Leaderboards</h3>
+                <p>Compete for top spots</p>
             </div>
         </div>
+    </section>
+
+    <!-- Developers Section - Middle & Prominent -->
+    <section class="developers-section">
+        <h2>For Developers</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+            Build amazing games and join our platform!
+        </p>
+        <a href="#developers" class="developers-btn">🚀 Start Building</a>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="privacy.html">Privacy</a>
+            <a href="about.html">About Us</a>
+        </div>
+        <p>&copy; 2026 GameZone. All rights reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const buttons = document.getElementById('authButtons');
+            buttons.classList.toggle('mobile-active');
+        }
+    </script>
 </body>
 </html>
