@@ -1,137 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Games - Unixgame</title>
-
-<style>
-body{
-    margin:0;
-    font-family: Arial, sans-serif;
-    background:#12d6c3;
-}
-
-/* Top Bar */
-.top-bar{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    padding:10px 15px;
-    background:#0fb9aa;
-}
-
-.logo{
-    width:40px;
-    height:40px;
-    border-radius:10px;
-}
-
-.search-box{
-    flex:1;
-    padding:10px;
-    border-radius:20px;
-    border:none;
-    outline:none;
-}
-
-/* Grid */
-.games-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(140px,1fr));
-    gap:15px;
-    padding:15px;
-}
-
-/* Game Card */
-.game{
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.game:hover{
-    transform:scale(1.05);
-}
-
-.game img{
-    width:100%;
-    height:130px;
-    object-fit:cover;
-}
-
-.game-name{
-    text-align:center;
-    padding:8px;
-    font-weight:bold;
-    color:#222;
-}
-
-/* Back Button */
-.back{
-    display:block;
-    margin:25px auto;
-    width:180px;
-    text-align:center;
-    padding:10px;
-    background:black;
-    color:white;
-    border-radius:20px;
-    text-decoration:none;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games -Unixgame</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a0033 25%, #000428 50%, #0f0f23 75%, #120458 100%);
+            background-size: 400% 400%;
+            animation: cyberPulse 10s ease infinite;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        @keyframes cyberPulse {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .header {
+            background: rgba(0,255,204,0.1); backdrop-filter: blur(10px);
+            padding: 1rem; position: sticky; top: 0; z-index: 10;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: bold; color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }
+        .search-bar { flex: 1; max-width: 500px; margin: 0 1rem; }
+        .search-bar input {
+            width: 100%; padding: 0.8rem; border: none; border-radius: 25px;
+            background: rgba(255,255,255,0.1); color: #fff; font-size: 1rem;
+            box-shadow: 0 0 20px rgba(0,255,204,0.3); transition: all 0.3s;
+        }
+        .search-bar input:focus { outline: none; box-shadow: 0 0 30px #00ffcc; }
+        .dark-toggle { background: #ff00ff; color: #fff; border: none; padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; }
+        
+        /*------------------------------------------- GAME search SECTION - Your games go here -----------------------------------------------------------------------------------*/
+        #gameSection {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem; 
+            padding: 2rem; 
+            max-width: 1400px; 
+            margin: 0 auto;
+        }
+        .game-logo {
+            aspect-ratio: 1; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+            filter: grayscale(50%); 
+            border: 2px solid transparent;
+            background: rgba(255,255,255,0.05);
+            width: 100%; height: 120px; object-fit: cover;
+        }
+        .game-logo:hover {
+            transform: scale(1.1); 
+            filter: grayscale(0%) brightness(1.2); 
+            box-shadow: 0 0 30px #00ffcc;
+            border-color: #00ffcc;
+        }
+        .categories {
+            display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; padding: 2rem;
+            background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        }
+        .cat-btn {
+            padding: 0.7rem 1.5rem; 
+            background: rgba(255,0,255,0.2); 
+            border: 1px solid #ff00ff;
+            color: #fff; 
+            border-radius: 25px; 
+            cursor: pointer; 
+            transition: all 0.3s;
+        }
+        .cat-btn.active, .cat-btn:hover { background: #ff00ff; box-shadow: 0 0 20px #ff00ff; }
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); z-index: 20; justify-content: center; align-items: center;
+        }
+        .modal-content { text-align: center; }
+        .close { position: absolute; top: 20px; right: 30px; font-size: 2rem; cursor: pointer; color: #ff00ff; }
+        @media (max-width: 768px) {
+            #gameSection { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.8rem; padding: 1rem; }
+            .header { flex-direction: column; gap: 1rem; }
+            .search-bar { max-width: 100%; margin: 0; }
+        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .game-logo { animation: fadeInUp 0.5s ease forwards; }
+    </style>
 </head>
-
 <body>
+    <header class="header">
+        <div class="logo">GameZone</div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search games...">
+        </div>
+        <button class="dark-toggle" onclick="toggleDark()">🌙</button>
+    </header>
 
-<!-- Top Bar -->
-<div class="top-bar">
-<img src="https://github.com/RohitSharm23/unixgame.github.io/blob/main/Screenshot%202026-01-30%20175530.png?raw=true
-" class="logo">
-<input type="text" class="search-box" placeholder="Search games..." onkeyup="searchGames()">
-</div>
+    <div class="categories">
+        <button class="cat-btn active" data-category="all">All</button>
+        <button class="cat-btn" data-category="action">Action</button>
+        <button class="cat-btn" data-category="puzzle">Puzzle</button>
+        <button class="cat-btn" data-category="strategy">Strategy</button>
+        <button class="cat-btn" data-category="multiplayer">Multiplayer</button>
+    </div>
 
-<!-- -----------------------------------------------------------Games ------------------------------------------------------------------------>
-<div class="games-grid" id="gamesList">
+    <!----------------------------------------------------------------------- 🔥 GAME SECTION - ADD YOUR GAMES HERE 🔥 -------------------------------------------------------------------->
+    <section id="gameSection">
+        <!-- HOW TO ADD NEW GAME: Copy this exact format 👇 -->
+        <img src="https://cdn.dribbble.com/users/131697/screenshots/6626811/esports-logo_4x.jpg" class="tictactoe.html" 
+             data-name="ActionBlast" data-category="puzzle" 
+             onclick="openModal('TicTacToe', 'Play TicTacToe' High-speed shooter!')">
+        
+        <img src="https://via.placeholder.com/120x120/4ecdc4/000?text=P" class="game-logo" 
+             data-name="PuzzleQuest" data-category="puzzle" 
+             onclick="openModal('PuzzleQuest', 'Play PuzzleQuest! Brain teasers!')">
+        
+        <img src="https://via.placeholder.com/120x120/45b7d1/000?text=S" class="game-logo" 
+             data-name="StrategyWars" data-category="strategy" 
+             onclick="openModal('StrategyWars', 'Play StrategyWars! Build your empire!')">
+        
+        <img src="https://via.placeholder.com/120x120/f9ca24/000?text=M" class="game-logo" 
+             data-name="MultiBattle" data-category="multiplayer" 
+             onclick="openModal('MultiBattle', 'Play MultiBattle! Battle friends online!')">
+        
+        <img src="https://via.placeholder.com/120x120/ff9ff3/000?text=C" class="game-logo" 
+             data-name="ChessMaster" data-category="strategy" 
+             onclick="openModal('ChessMaster', 'Play Chess! Classic strategy!')">
+        
+        <img src="https://via.placeholder.com/120x120/00ffcc/000?text=T" class="game-logo" 
+             data-name="TicTacToe" data-category="puzzle" 
+             onclick="openModal('TicTacToe', 'Play Tic-Tac-Toe! Quick puzzle fun!')">
+        
+        <!-- ADD MORE GAMES ABOVE THIS LINE 👆 -->
+    </section>
 
-<a href="tictactoe.html" class="game">
-<img src="https://static.vecteezy.com/system/resources/previews/054/024/880/non_2x/xo-game-icon-illustration-free-vector.jpg">
-<div class="game-name">Tic Tac Toe</div>
-</a>
+    <div id="gameModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDesc"></p>
+            <button onclick="playGame()" style="padding:1rem 2rem; background:#00ffcc; border:none; border-radius:25px; font-size:1.2rem; cursor:pointer;">PLAY NOW</button>
+        </div>
+    </div>
 
-<a href="chess.html" class="game">
-<img src="https://c8.alamy.com/comp/2MA8PD1/chess-club-emblem-chess-tournament-logo-chess-pieces-isolated-on-a-white-background-2MA8PD1.jpg">
-<div class="game-name">chess</div>
-</a>
+    <script>
+        // Search functionality - works automatically with data-name
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.game-logo').forEach(logo => {
+                const name = logo.dataset.name.toLowerCase();
+                logo.style.display = name.includes(term) ? 'block' : 'none';
+            });
+        });
 
-<a href="games/car.html" class="game">
-<img src="images/car.jpg">
-<div class="game-name">Car Racing</div>
-</a>
+        // Category filters - works automatically with data-category
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelector('.cat-btn.active').classList.remove('active');
+                btn.classList.add('active');
+                const cat = btn.dataset.category;
+                document.querySelectorAll('.game-logo').forEach(logo => {
+                    logo.style.display = (cat === 'all' || logo.dataset.category === cat) ? 'block' : 'none';
+                });
+            });
+        });
 
-<a href="games/subway.html" class="game">
-<img src="images/subway.jpg">
-<div class="game-name">Subway Run</div>
-</a>
-
-</div>
-
-<a href="index.html" class="back">⬅ Back Home</a>
-
-<!-- Search Script -->
-<script>
-function searchGames(){
-    let input=document.querySelector(".search-box").value.toLowerCase();
-    let games=document.querySelectorAll(".game");
-
-    games.forEach(game=>{
-        let name=game.innerText.toLowerCase();
-        game.style.display = name.includes(input) ? "block" : "none";
-    });
-}
-</script>
-
+        // Modal functions
+        function openModal(title, desc) {
+            document.getElementById('modalTitle').textContent = title;
+            document.getElementById('modalDesc').textContent = desc;
+            document.getElementById('gameModal').style.display = 'flex';
+        }
+        function closeModal() { document.getElementById('gameModal').style.display = 'none'; }
+        function playGame() { 
+            alert('Launching game... Replace with: window.location.href = "your-game-page.html"'); 
+        }
+        function toggleDark() { document.body.classList.toggle('dark-mode'); }
+    </script>
 </body>
 </html>
