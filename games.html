@@ -471,7 +471,7 @@
         ========================================================================================================================================= */
         @media (max-width: 768px) {
             .games-grid, .categories-grid {
-                grid-template-columns: repeat(2,1fr);              /* for the mobile,for the no. of column ***********************/ 
+                grid-template-columns: repeat(2,1fr);               /* for the mobile,for the no. of column ***********************/ 
                 gap: 1rem;
             }
 
@@ -498,7 +498,7 @@
 
         @media (max-width: 480px) {
             .games-grid {
-                grid-template-columns: repeat(2.1fr);
+                grid-template-columns: 1fr;
                 gap: 0.8rem;
             }
         }
@@ -612,7 +612,11 @@
         <div class="container">
             <div class="games-grid">
                
-
+    <style>
+        a{
+            text-decoration: none;                                                                /*this line for the removal of underline from the links*/
+        }
+    </style>
     <a href="tictactoe.html" class="game-link">
         <article class="game-card" data-tags="strategy puzzle">
             <div class="game-icon">❌</div>
@@ -1094,3 +1098,4 @@
     </script>
 </body>
 </html>
+
