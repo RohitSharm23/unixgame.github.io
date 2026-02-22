@@ -61,6 +61,12 @@
             text-align: center;
             padding: 0.5rem 0;
         }
+        .game-logo {
+    width: 80px;        /* logo ki width */
+    height: 80px;       /* logo ki height */
+    object-fit: contain;
+    display: block;
+}
 
         .logo {
             width: 50px;
@@ -206,79 +212,31 @@
 
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));                      /*transparent columns adjust **************/*
-            gap: 1.2rem;                                                                       /* two logo ke beach ka distance*/
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));                    /*transparent columns adjust **************/*
+            gap: 20px;                                                                       /* two logo ke beach ka distance*/
+            justify-items: center;
         }
 
-        .game-card {
-            background: rgba(100,100, 255, 0.08);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(100, 100, 100, 0.1);
-            border-radius: 20px;
-            padding: 0.1rem;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
+        
+         
 
-        .game-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
+        .game-logo {
+         font-size: 50px;
+        cursor: pointer;
+         transition: transform 0.3s ease;
+         padding: 0;
+         margin: 0;
+}
 
-        .game-card:hover::before {
-            left: 100%;
-        }
+.game-logo:hover {
+    transform: scale(1.2);
+}
+        
 
-        .game-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border-color: #4ecdc4;
-        }
+        
+        
 
-        .game-icon {
-            width: 60px;                                               /* height or width he game ke icon ke */
-            height: 60px;
-            margin: 0 auto 0.8rem;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 15px;                                             /* icon ke shape ke lie*/
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .game-card:hover .game-icon {
-            transform: rotate(360deg) scale(1.1);                          /* jo game ke icon ko rotate kar raha he*/
-        }
-
-        .game-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .game-card:hover h3 {
-            color: #4ecdc4;
-        }
-
-        .game-card p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
-        }
+       
 
         /* ==========================================================================
            CATEGORIES SECTION - Bottom
@@ -471,7 +429,7 @@
         ========================================================================================================================================= */
         @media (max-width: 768px) {
             .games-grid, .categories-grid {
-                grid-template-columns: repeat(2,1fr);               /* for the mobile,for the no. of column  "repeat(2,1fr)" ***********************/ 
+                grid-template-columns: repeat(2,1fr);               /* for the mobile,for the no. of column ***********************/ 
                 gap: 1rem;
             }
 
@@ -498,7 +456,7 @@
 
         @media (max-width: 480px) {
             .games-grid {
-                grid-template-columns: repeat(2,1fr);                                /* for the mobile,for the no. of column  "repeat(2,1fr)" ***********************/ 
+                grid-template-columns: repeat(2,1fr);
                 gap: 0.8rem;
             }
         }
@@ -568,7 +526,7 @@
         <div class="load-bar">
             <div class="load-progress"></div>
         </div>
-        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Loading Games...</p>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">Loading GameHub...</p>
     </div>
 
     <!-- PARTICLE BACKGROUND -->
@@ -583,7 +541,7 @@
     <section class="logo-section reveal">
         <div class="container">
             <div class="logo" role="img" aria-label="GameHub Logo">🎮</div>
-            <h1 class="game-title" aria-label="Games">Unixgame</h1>
+            <h1 class="game-title" aria-label="GameHub">Unixgame</h1>
         </div>
     </section>
 
@@ -607,7 +565,14 @@
         </div>
     </section>
 
-    <!--------------------------------------------------------------------------------------------------------------------- GAMES SECTION - Featured Games First -->
+   
+    <!--------------------------------------------------------------------------------------------------------------------
+    
+------------------------------------------------------------------------------------------------ GAMES SECTION --------------------->
+    
+
+
+
     <section class="games-section reveal" id="gamesGrid">
         <div class="container">
             <div class="games-grid">
@@ -618,32 +583,24 @@
         }
     </style>
     <a href="tictactoe.html" class="game-link">
-        <article class="game-card" data-tags="strategy puzzle">
-            <div class="game-icon">❌</div>
-            <h3>Tic Tac Toe</h3>
-        </article>
-    </a>
+    <img src="https://tse1.mm.bing.net/th/id/OIP.RmH8I0_-A0X0FTAcMbjwHwHaH_?w=1000&h=1080&rs=1&pid=ImgDetMain&o=7&rm=3" class="game-logo" alt="Tic Tac Toe">
+</a>
 
-    <a href="snake.html" class="game-link">
-        <article class="game-card" data-tags="arcade classic">
-            <div class="game-icon">🐍</div>
-            <h3>Snake Game</h3>
-        </article>
-    </a>
-
-    <a href="memory.html" class="game-link">
-        <article class="game-card" data-tags="puzzle memory">
-            <div class="game-icon">🧠</div>
-            <h3>Memory Match</h3>
-        </article>
-    </a>
-
-    <a href="reaction.html" class="game-link">
-        <article class="game-card" data-tags="action reaction">
-            <div class="game-icon">⚡</div>
-            <h3>Reaction Test</h3>
-        </article>
-    </a>
+      <a href="" class="game-link">
+    <img src="" class="game-logo" alt="snakegame">
+</a>
+  <a href="" class="game-link">
+    <img src="" class="game-logo" alt="Chess">
+</a>
+  <a href="" class="game-link">
+    <img src="" class="game-logo" alt="">
+</a>
+  <a href="" class="game-link">
+    <img src="" class="game-logo" alt="">
+</a>
+  <a href="l" class="game-link">
+    <img src="" class="game-logo" alt="">
+</a>
 
 </div>
 </section>
@@ -691,7 +648,7 @@
 
     <script>
         /*
-         * games JavaScript - 700+ Line Complete Solution
+         * GameHub JavaScript - 700+ Line Complete Solution
          * Features: Loading, Particles, Search, Animations, Accessibility
          */
 
