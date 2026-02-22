@@ -221,11 +221,11 @@
          
 
         .game-logo {
-         font-size: 50px;
-        cursor: pointer;
-         transition: transform 0.3s ease;
-         padding: 0;
-         margin: 0;
+    width: 120px;                                                        /*************************************PC game logo size******************************* */
+    height: 120px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .game-logo:hover {
@@ -433,11 +433,7 @@
                 gap: 1rem;
             }
 
-            .logo {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
+            
 
             .search-box {
                 padding: 0.8rem 1rem 0.8rem 2.8rem;
@@ -459,6 +455,12 @@
                 grid-template-columns: repeat(2,1fr);
                 gap: 0.8rem;
             }
+            @media (max-width: 600px) {
+            .game-logo {
+                width: 140px;                                                              /*************************** Mobile  game logo  size ****************/
+                 height: 1400px;
+    }
+}
         }
 
         /* ==========================================================================
