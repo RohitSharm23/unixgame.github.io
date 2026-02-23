@@ -231,7 +231,40 @@
 .game-logo:hover {
     transform: scale(1.2);
 }
-        
+      
+       * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 15px;
+}
+
+/* Responsive Grid */
+.games-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+}
+
+/* Card */
+.game-card {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* Square */
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ddd;
+}
+
+/* Image */
+.game-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Prevent stretch */
+  display: block;
+} 
 
         
         
@@ -584,7 +617,7 @@
             text-decoration: none;                                                                /*this line for the removal of underline from the links*/
         }
     </style>
-    <a href="tictactoe.html" class="game-link">
+    <a href="tictactoe.html" class="game-card">
     <img src="https://github.com/RohitSharm23/unixgame.github.io/blob/main/Screenshot%202026-02-15%20152715.png?raw=true" alt="Tic Tac Toe">
 </a>
 
@@ -1057,4 +1090,3 @@
     </script>
 </body>
 </html>
-
