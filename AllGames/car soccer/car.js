@@ -463,9 +463,4 @@ function mousePressed() {
   }
 }
 }
-<body>
 
-    <!-- tumhara game ka HTML code -->
-
-    <script src="script.js"></script>
-</body>
