@@ -404,6 +404,8 @@ function goSparksGo() {
   }
 }
 
+
+
 function drawSoccerField() {
   background(254);
   noFill();
@@ -414,17 +416,17 @@ function drawSoccerField() {
   ellipse(width / 2, height / 2, width / 6);
 
   // left goalie box
-  rect(0, height / 2 - width / 6, width / 6, width / 3);
+  rect(70, height / 2 - width/ 6 +165, width / 6, width / 3);
   stroke(255, 100, 100);
-  rect(0, height / 2 - width / 12, width / 18, goalHeight);
+  rect(21, height / 2 - width / 12 +81 , width / 18, goalHeight);
   strokeWeight(10);
   line(0, height / 2 - width / 12, 0, height / 2 - width / 12 + goalHeight);
   // right goalie box
   strokeWeight(1);
   stroke(0);
-  rect(width - width / 6, height / 2 - width / 6, width / 6, width / 3);
+  rect(width - width / 6+90, height / 2 - width / 6 + 165, width / 6, width / 3);
   stroke(100, 100, 255);
-  rect(width - width / 18, height / 2 - width / 12, width / 18, goalHeight);
+  rect(width - width / 18 + 37, height / 2 - width / 12 +82, width / 18, goalHeight);
   strokeWeight(10);
   line(width, height / 2 - width / 12, width, height / 2 - width / 12 + goalHeight);
   strokeWeight(1);
