@@ -276,6 +276,41 @@ function keyPressed() {
 }
 
 function draw() {
+  // Add these globals
+let computerSpeed = 0.025; // Higher than player's 0.02
+let predictionTime = 1.5; // Seconds ahead to predict
+
+// In draw(), replace computerCar logic:
+const ballVel = ball.body.velocity;
+const predictedBallPos = createVector(
+  ball.body.position.x + ballVel.x * predictionTime * 60, // ~60fps
+  ball.body.position.y + ballVel.y * predictionTime * 60
+);
+
+const distToBall = p5.Vector.dist(computerCar.position, ball.position);
+const distToPlayer = p5.Vector.dist(computerCar.position, car.position);
+const distToGoal = abs(computerCar.position.x - width); // Right goal
+
+// Better defensive conditions
+
+const ballNearGoal = ball.position.x > width * 0.8; // Ball close to OUR goal
+const playerThreat = distToPlayer < width/8 && ball.position.x > width/2; // Player close + ball in our half
+
+let target;
+if (ballNearGoal || playerThreat) {
+  // Only defend when ball/player actually threaten goal
+  const goalCenterY = constrain(ball.position.y, height/2 - goalHeight/2, height/2 + goalHeight/2);
+  target = createVector(width * 0.95, goalCenterY); // Near goal, track ball height
+} else {
+  // Chase predicted ball position
+  const ballVel = ball.body.velocity;
+  const predictionTime = distToBall > 150 ? 1.2 : 0.8; // Less prediction when close
+  target = createVector(
+    ball.body.position.x + ballVel.x * predictionTime * 60,
+    ball.body.position.y + ballVel.y * predictionTime * 60
+  );
+}
+
   if (gameOver) {
     background(0); // Black screen
 
@@ -351,12 +386,12 @@ function draw() {
       goalWaitPeriod = false;
     }, 1000);
 
-    if (playerScore >= 10) {
+    if (playerScore >= 5) {
       winner = "PLAYER WINS!";
       gameOver = true;
     }
 
-    if (computerScore >= 10) {
+    if (computerScore >= 5) {
       winner = "COMPUTER WINS!";
       gameOver = true;
     }
@@ -403,32 +438,32 @@ function goSparksGo() {
     }
   }
 }
-
-
+const dx=10
 
 function drawSoccerField() {
-  background(254);
-  noFill();
-  stroke(55);
-  strokeWeight(1);
+  background(254)
+  noFill()
+  stroke(55)
+  strokeWeight(1)
 
-  line(width / 2, 0, width / 2, height);
-  ellipse(width / 2, height / 2, width / 6);
+  // center field line
+  line(width/2, 0, width/2, height)
+  ellipse(width/2, height/2, width/6)
 
   // left goalie box
-  rect(70, height / 2 - width/ 6 +165, width / 6, width / 3);
+  
   stroke(255, 100, 100);
-  rect(21, height / 2 - width / 12 +81 , width / 18, goalHeight);
+  
   strokeWeight(10);
-  line(0, height / 2 - width / 12, 0, height / 2 - width / 12 + goalHeight);
+  line(0, height/2 - width/12, 0, height/2 - width/12 + goalHeight)
   // right goalie box
   strokeWeight(1);
   stroke(0);
-  rect(width - width / 6+90, height / 2 - width / 6 + 165, width / 6, width / 3);
+  
   stroke(100, 100, 255);
-  rect(width - width / 18 + 37, height / 2 - width / 12 +82, width / 18, goalHeight);
+ 
   strokeWeight(10);
-  line(width, height / 2 - width / 12, width, height / 2 - width / 12 + goalHeight);
+  line(width, height/2 - width/12, width, height/2 - width/12 + goalHeight);
   strokeWeight(1);
   stroke(0);
 }
