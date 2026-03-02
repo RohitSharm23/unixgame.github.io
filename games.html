@@ -65,11 +65,21 @@
                 box-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
             }
 
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 1rem;
-            }
+           .container,
+          .wrapper {
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;   /* optional spacing */
+}
+            .games-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+
+
 
             /* ==========================================================================
             LOGO SECTION - MINIMAL SPACING
@@ -211,11 +221,11 @@
             /* ==========================================================================
             GAMES SECTION - Featured Games First
             ========================================================================== */
-            .games-section {
-                padding: 0.5rem 1rem 2rem;
-                max-width: 1200px;
-                margin: 0 auto;
-            }
+           
+         .games-section {
+    width: 100%;
+    padding: 20px;
+}
 
             .games-title {
                 text-align: center;
@@ -274,15 +284,26 @@
     object-fit: cover;  /* Prevent stretch */
     display: block;
     } 
-    .games-grid {                                                    /*   ======================only for game card adjustment========*/
-        display: grid;
-        grid-template-columns: repeat(10,120px);                                         /* column size means only size
-        gap: 20px;                                                                       /* two logo ke beach ka distance*/
-        justify-items: center;
-        row-gap: 5px;
-        column-gap: 5px;
-            
-    }
+                                                    /*   ======================only for game card adjustment========*/
+  
+                              /* column size means only size
+                                                                        /* two logo ke beach ka distance*/
+
+    .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+body {
+    margin: 0;
+}
+
+
 
             
             
