@@ -21,6 +21,20 @@
 </script>
 
         
+        if (/* your logic for determining if the user is signed in */) {
+  gtag('config', 'TAG_ID', {
+    'user_id': 'USER_ID'
+  });
+} else if (/* your logic for determining if the user signed out */) {
+  gtag('config', 'TAG_ID', {
+    'user_id': null
+  });
+} else {
+  // Do nothing if the user never signed in.
+}
+
+        
+        
         <style>
             /*
             * unixgame - Premium Gaming Landing Page
