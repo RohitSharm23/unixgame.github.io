@@ -7,7 +7,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 75%, #ff9ff3 100%);
+            background: linear-gradient(135deg, #1006e0 0%, #41abc6 25%, #45b7d1 50%, #1d60dd 75%, #2f0ed4 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: #333;
@@ -27,18 +27,24 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
-            padding: 1rem 2%;
+            padding: 1rem 2%;                               /* here we can adjust nav bar by right left , by adjusting " 0.8" */
             display: flex;
-            justify-content: space-between;
+            justify-content:flex-start;
+            gap: 1850px;                                     /* this line means gap b\w unixgame and login sinup*/
             align-items: center;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            height: 20px;                                  /* height iof navigation bar*/
+        }
+        html, body {                                    /* this function use for removing all spaces from bar ,buttons, screen ke end mei connect ker deta he*/
+            margin: 0;
+            padding: 0;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 3rem;
             font-weight: bold;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #6b77ff, #4ecdc4);          /* colour for logo og unix game*/
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -77,7 +83,7 @@
         }
 
         .btn-auth {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            background: linear-gradient(45deg, #ee4b74, #e44d4d);         /* cour for logn sign up option*/
             color: white;
             border: 2px solid #ff6b6b;
         }
