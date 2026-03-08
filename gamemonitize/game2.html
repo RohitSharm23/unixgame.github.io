@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Fullscreen Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .game-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+        }
+
+        iframe {
+            width: 100vw;
+            height: 100vh;
+            border: none;
+            display: block;
+            background: #000;
+            transform-origin: top left;
+            transition: all 0.3s ease;
+        }
+
+        /* Fullscreen button */
+        .fullscreen-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10000;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            .fullscreen-btn {
+                top: 5px;
+                right: 5px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+        }
+
+        /* Loading overlay */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading" id="loading">
+        <div>
+            <div class="spinner"></div>
+            <div>Launching Game...</div>
+        </div>
+    </div>
+
+    <!-- Fullscreen Toggle Button -->
+    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
+        ⛶
+    </button>
+
+    <!-- Game Iframe - CHANGE THIS URL TO YOUR GAME -->
+    <div class="game-container">
+        <iframe 
+            id="gameFrame" 
+            src="https://html5.gamemonetize.co/bwrunfiqbjfxprp91bq5v0xhtqzmukno" 
+            allowfullscreen="true" 
+            allow="fullscreen; autoplay; accelerometer; gyroscope; magnetometer"
+            loading="eager">
+        </iframe>
+    </div>
+
+    <script>
+        const gameFrame = document.getElementById('gameFrame');
+        const loading = document.getElementById('loading');
+
+        // Hide loading after iframe loads
+        gameFrame.onload = function() {
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, 1000);
+        };
+
+        // Auto-request fullscreen on load (optional - some browsers block this)
+        window.addEventListener('load', function() {
+            if (gameFrame.requestFullscreen) {
+                gameFrame.requestFullscreen().catch(() => {
+                    // Silent fail - user can click fullscreen button
+                });
+            }
+        });
+
+        // Fullscreen toggle function
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                if (gameFrame.requestFullscreen) {
+                    gameFrame.requestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+
+        // Handle fullscreen change
+        document.addEventListener('fullscreenchange', function() {
+            if (!document.fullscreenElement) {
+                // Optionally show fullscreen button more prominently
+            }
+        });
+
+        // Handle orientation change and resize
+        window.addEventListener('orientationchange', handleResize);
+        window.addEventListener('resize', handleResize);
+
+        function handleResize() {
+            // Ensure iframe stays fullscreen
+            gameFrame.style.width = '100vw';
+            gameFrame.style.height = '100vh';
+        }
+
+        // Prevent zoom on mobile (optional)
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>
