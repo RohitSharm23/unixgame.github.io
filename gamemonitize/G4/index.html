@@ -1,1 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Game</title>
 
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<a href="javascript:history.back()">⬅ Back to Games</a>
+</div>
+
+<!-- GAME PLAYER -->
+<div class="game-container">
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://html5.gamemonetize.co/2o839x3puukucr9eseld3go95wlb3yyf/"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- GAME DETAILS -->
+<div class="game-info">
+
+<h2>About the Game</h2>
+<p>
+description:
+Welcome to the world of epic battles! This game delivers physics-based combat where your agility, reaction speed, and strategic thinking are put to the test.
+Control a stick fighter, unleash powerful strikes, and perform acrobatic moves to defeat your opponents.
+Game Modes: • Single Player: Fight against enemies and improve your skills. 
+• Two Players: Battle your friends on the same device and prove who the ultimate warrior is.
+• Survival: An endless mode where you must survive as long as possible against nonstop waves of enemies. Game Features: 
+• Realistic stickman physics. 
+• Unique attack animations and combo moves. 
+• Exciting arenas wi
+
+<h2>How to Play</h2>
+<p>
+ controls of the game.
+• On mobile devices: Move your character using the virtual joystick located on the right side of the screen.
+Attacks are performed automatically in the direction the character is moving.
+• On PC: Use the arrow keys to control your character&
+</p>
+
+<h2>Developer</h2>
+<p>
+
+Stick Arena: Stickmen
+by Serbull
+</p>
+
+</div>
+<script>
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
+}
+
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
+
+</script>
+</body>
+</html>
