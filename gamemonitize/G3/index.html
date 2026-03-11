@@ -88,8 +88,7 @@ padding:0 20px;
 <div class="game-container">
 
 <div class="game-box" id="gameBox">
-
-<button class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
 
 <!-- 🔴 PUT YOUR GAME LINK HERE -->
   
@@ -134,19 +133,33 @@ by Serbull
 </p>
 
 </div>
-
 <script>
 
 function openFullscreen(){
-let elem = document.getElementById("gameBox");
 
-if(elem.requestFullscreen){
-elem.requestFullscreen();
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
 }
 
+btn.style.display="none";
+
 }
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
 
 </script>
-
 </body>
 </html>
