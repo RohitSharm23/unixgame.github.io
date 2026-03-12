@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Play Game</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<a href="javascript:history.back()">⬅ Back to Games</a>
+</div>
+
+<!-- GAME PLAYER -->
+<div class="game-container">
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://html5.gamemonetize.co/qn8id2vh04sszh1968dgt3lp5u0hi7pl/"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- GAME DETAILS -->
+<div class="game-info">
+
+<h2>About the Game</h2>
+<p>
+Begin your journey with an intense survival challenge. Dodge and combat waves of enemies. Its not just about survival; 
+its about quick reflexes and strategic thinking, as each lane presents unique obstacles and enemies! In the challenging world of enemies, survival is a team effort.
+Partner with players from all over the globe to battle the enemies. Stay alert – alliances are complex, and not every survivor you encounter is friendly.
+Assemble your ultimate team by recruiting heroes. With a choice of three military branches, each hero comes with their own unique skills.
+Combine different heroes to easily achieve victory against the enemies.
+<h2>How to Play</h2>
+<p>
+Mouse click or tap to play as per the instruction
+
+<h2>Developer</h2>
+<p>
+Epic Runner Parkour Game
+by FINGERNIC
+
+</div>
+<script>
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
+}
+
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
+
+</script>
+</body>
+</html>
