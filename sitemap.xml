@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-  <loc>https://unixgame.online/</loc>
+<loc>https://unixgame.online/</loc>
+</url>
+  
+<url>
+<loc>https://unixgame.online/index.html/</loc>
+</url>  
+
+<url>
+<loc>https://unixgame.online/games.html</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/games.html</loc>
+<loc>https://unixgame.online/about.html</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/chess.html</loc>
+<loc>https://unixgame.online/contact.html</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/tictactoe.html</loc>
+<loc>https://unixgame.online/privacy.html</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/about.html</loc>
+<loc>https://unixgame.online/gamemonitize/G1/</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/login.html</loc>
+<loc>https://unixgame.online/gamemonitize/G2/</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/signup.html</loc>
+<loc>https://unixgame.online/gamemonitize/G3/</loc>
 </url>
 
 <url>
-  <loc>https://unixgame.online/privacy.html</loc>
+<loc>https://unixgame.online/gamemonitize/G4/</loc>
+</url>
+
+<url>
+<loc>https://unixgame.online/gamemonitize/G5/</loc>
+</url>
+  
+<url>
+<loc>https://unixgame.online/gamemonitize/G6/</loc>
+</url>
+  
+<url>
+<loc>https://unixgame.online/gamemonitize/G7/</loc>
+</url>
+  
+<url>
+<loc>https://unixgame.online/gamemonitize/G8/</loc>
+</url>
+
+<url>
+<loc>https://unixgame.online/gamemonitize/G9/</loc>
 </url>
 
 </urlset>
-
