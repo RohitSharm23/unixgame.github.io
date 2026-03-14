@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unixgame</title>
+    <title>GamesHub</title>
     <style>
         * {
             margin: 0;
@@ -38,9 +38,9 @@
 
         .logo {
             height: 60px;
-            width: 100px;
+            width: 60px;
             border-radius: 15px;
-            object-fit: contain;
+            object-fit:contain;
             cursor: pointer;
             transition: all 0.3s ease;
             border: 2px solid #00d4ff;
@@ -100,7 +100,7 @@
         /* Game Grid - EXACTLY 3 ROWS */
         .games-grid {
             display: grid;
-            grid-template-rows:repeat(3 ,1fr);
+            
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 10px;
             width: 100vw;
@@ -110,7 +110,7 @@
         }
 
         .game-card {
-            aspect-ratio: 4/ 3;
+            aspect-ratio: 1 / 1;
             border-radius: 0;
             overflow: hidden;
             cursor: pointer;
@@ -133,7 +133,8 @@
         .game-image {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            
+            object-fit:contain; 
             object-position: center;
             transition: transform 0.4s ease;
             position: absolute;
@@ -147,54 +148,23 @@
         }
 
         .game-overlay {
-    position: relative;
-    background: linear-gradient(transparent, rgba(0,0,0,0.9));
-    padding: 20px;
-    width: 100%;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
-    z-index: 2;
-}
+            position: relative;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            padding: 20px;
+            width: 100%;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 2;
+        }
 
-.game-overlay a,
-.game-overlay .game-title {
-    color: white !important;
-    text-decoration: none !important;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-}
-
-.game-card:hover .game-overlay a,
-.game-card:hover .game-overlay .game-title {
-    color: white !important;
-}
+        .game-card:hover .game-overlay {
+            transform: translateY(0);
+        }
 
         .game-title {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
-
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-
-             text-decoration: none;
-            color: white;
-        }
-        game-title a {
-            text-decoration: none;
-            color: white;
-        }
-
-    
-        .game-card{
-            text-decoration: none;
-            color: white;
-        }
-        .game-card:hover{
-            color: white;
         }
 
         /* Responsive - Always 3 rows */
@@ -227,14 +197,14 @@
 
             .games-grid {
                 grid-template-rows: repeat(3, 1fr);
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 height: calc(100vh - 70px);
             }
         }
 
         @media (max-width: 480px) {
             .games-grid {
-                grid-template-rows: repeat(7, 90px);            /* STILL 3 ROWS */
+                grid-template-rows: repeat(3, 90px);            /* STILL 3 ROWS */
                 grid-template-columns: repeat(3,120px);        /* 1 column on mobile */
                 height: calc(100vh - 70px);
             }
@@ -278,7 +248,7 @@
     <!-- Header -->
     <header class="header">
         <a href="index.html">
-            <img src="unixgame.png" class="logo">
+            <img src="https://github.com/RohitSharm23/unixgame.github.io/blob/main/Image/game1.png?raw=true" alt="Gaming Logo" class="logo">
         </a>
         <div class="search-box">
             <i class="search-icon">🔍</i>
@@ -289,133 +259,150 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="games-grid">
-
-            
-<!-->       <a href="tictactoe.html" class="game-card">
+            <!-- 9 Games = 3 Rows x 3 Columns (Perfect fit) -->
+            <a href="tictactoe.html" class="game-card">
                 <img src="Screenshot 2026-02-15 152715.png" alt="Game 1" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Tic Tac Toe</div>
+                    <div class="game-title">Game 1</div>
                 </div>
             </a>
 
-<!-1->     <a href="gamemonitize/G001/" class="game-card">
-                <img src="gamemonitize/G001/I[1].png" alt="Game 2" class="game-image">
+            <a href="tictactoe.htmll" class="game-card">
+                <img src="Screenshot 2026-03-13 190431.png" alt="Game 2" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Mini Golf 3D</div>
+                    <div class="game-title">Game 2</div>
                 </div>
             </a>
 
-<!-2->       <a href="gamemonitize/G002/" class="game-card">
-                <img src="gamemonitize/G002/I[2].png" alt="Game 3" class="game-image">
+            <a href="game3.html" class="game-card">
+                <img src="Screenshot_2026_0310_130504.png" alt="Game 3" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Parking Master: License Exam</div>
+                    <div class="game-title">Game 3</div>
                 </div>
             </a>
 
-<!-3->     <a href="gamemonitize/G003/" class="game-card">
-                <img src="gamemonitize/G003/I[3].png" alt="Game 4" class="game-image">
+            <a href="game4.html" class="game-card">
+                <img src="Screenshot 2026-03-13 190431.png" alt="Game 4" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Stick Arena: Stickmen</div>
+                    <div class="game-title">Game 4</div>
                 </div>
             </a>
 
-<!-4->     <a href="gamemonitize/G004/" class="game-card">
-                <img src="gamemonitize/G004/I[4].png" alt="Game 5" class="game-image">
+            <a href="game5.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/FECA57/000000?text=Game+5" alt="Game 5" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Car Parkour Challenge</div>
-                </div>
-            </a>                    
-
-<!-5->     <a href="gamemonitize/G005/" class="game-card">
-                <img src="gamemonitize/G005/I[5].png" alt="Game 6" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Car Climb Mountain</div>
+                    <div class="game-title">Game 5</div>
                 </div>
             </a>
 
-
-<!-6->     <a href="gamemonitize/G006/" class="game-card">
-                <img src="gamemonitize/G006/I[6].png" alt="Game 7" class="game-image">
+            <a href="game6.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/FF9FF3/000000?text=Game+6" alt="Game 6" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Tall Man Run 3D</div>
+                    <div class="game-title">Game 6</div>
                 </div>
             </a>
 
-<!-7->     <a href="gamemonitize/G007/" class="game-card">
-                <img src="gamemonitize/G007/I[7].png" alt="Game 8" class="game-image">
+            <a href="game7.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/54A0FF/000000?text=Game+7" alt="Game 7" class="game-image">
                 <div class="game-overlay">
-                    <div class="game-title">Speed Car Race Madness</div>
+                    <div class="game-title">Game 7</div>
                 </div>
             </a>
-<!-8->     <a href="gamemonitize/G008/" class="game-card">
-                <img src="gamemonitize/G008/I[8].png" alt="Game 9" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">The Zombie House</div>
-                </div>
-            </a>           
-<!-9->     <a href="gamemonitize/G009/" class="game-card">
-                <img src="gamemonitize/G009/I[9].png" alt="Game 10" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Stick War Saga</div>
-                </div>
-            </a>           
-<!-10->     <a href="gamemonitize/G010/" class="game-card">
-                <img src="gamemonitize/G010/I[10].png" alt="Game 11" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Epic Runner Parkour Game</div>
-                </div>
-            </a>    
-<!-11->     <a href="gamemonitize/G011/" class="game-card">
-                <img src="gamemonitize/G011/I[11].png" alt="Game 12" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Water Ball Sorting Puzzle</div>
-                </div>
-            </a>        
-<!-12->     <a href="gamemonitize/G012/" class="game-card">
-                <img src="gamemonitize/G012/I[12].png" alt="Game 13" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Knife Madness</div>
-                </div>
-            </a>
-<!-13->     <a href="gamemonitize/G013/" class="game-card">
-                <img src="gamemonitize/G013/I[13].png" alt="Game 14" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Mermaid Rescue</div>
-                </div>
-            </a>            
-<!-14->     <a href="gamemonitize/G014/" class="game-card">
-                <img src="gamemonitize/G014/I[14].png" alt="Game 15" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Missile Escape Master</div>
-                </div>
-            </a>  
-<!-15->     <a href="gamemonitize/G015/" class="game-card">
-                <img src="gamemonitize/G015/I[15].png" alt="Game 16" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Stickman Prison Warriors</div>
-                </div>
-            </a>  
- <!-16->     <a href="gamemonitize/G016/" class="game-card">
-                <img src="gamemonitize/G016/I[16].png" alt="Game 17" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Subway Winter Vacation</div>
-                </div>
-            </a>
-  <!-17->     <a href="gamemonitize/G017/" class="game-card">
-                <img src="gamemonitize/G017/I[17].png" alt="Game 12" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Drop Stack Ball Game</div>
-                </div>
-            </a>
-  
-  <!-18->     <a href="gamemonitize/G018/" class="game-card">
-                <img src="gamemonitize/G017/I[18].png" alt="Game 12" class="game-image">
-                <div class="game-overlay">
-                    <div class="game-title">Drop Stack Ball Game</div>
-                </div>
-            </a>
-  
 
+            <a href="game8.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/5F27CD/000000?text=Game+8" alt="Game 8" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 8</div>
+                </div>
+            </a>
+
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+            <a href="game9.html" class="game-card">
+                <img src="https://via.placeholder.com/400x400/00D4FF/000000?text=Game+9" alt="Game 9" class="game-image">
+                <div class="game-overlay">
+                    <div class="game-title">Game 9</div>
+                </div>
+            </a>
+
+            
+            
         </div>
     </main>
 
