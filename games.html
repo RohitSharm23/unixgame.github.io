@@ -147,18 +147,29 @@
         }
 
         .game-overlay {
-            position: relative;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            padding: 20px;
-            width: 100%;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-            z-index: 2;
-        }
+    position: relative;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    padding: 20px;
+    width: 100%;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
 
-        .game-card:hover .game-overlay {
-            transform: translateY(0);
-        }
+.game-overlay a,
+.game-overlay .game-title {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.game-card:hover .game-overlay a,
+.game-card:hover .game-overlay .game-title {
+    color: white !important;
+}
 
         .game-title {
             font-size: 18px;
