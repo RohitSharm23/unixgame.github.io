@@ -166,6 +166,25 @@
             font-weight: bold;
             margin-bottom: 5px;
         }
+        /* BULLETPROOF ANCHOR OVERRIDE - PUT THIS LAST */
+a, a:link, a:visited, a:hover, a:active,
+.game-card a, .game-card a:link, .game-card a:visited, 
+.game-card a:hover, .game-card a:active,
+.game-overlay a, .game-overlay a:link, .game-overlay a:visited,
+.game-overlay a:hover, .game-overlay a:active {
+    color: white !important;
+    text-decoration: none !important;
+    background: none !important;
+    border: none !important;
+}
+
+.game-title {
+    color: white !important;
+    text-decoration: none !important;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
 
         /* Responsive - Always 3 rows */
         @media (max-width: 1200px) {
