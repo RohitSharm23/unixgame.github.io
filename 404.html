@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 - Game Over</title>
+<title>404 - Page Not Found</title>
 
 <style>
 
@@ -25,31 +25,68 @@ text-align:center;
 overflow:hidden;
 }
 
+/* moving background particles */
+
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background-image:radial-gradient(#00d4ff 1px, transparent 1px);
+background-size:40px 40px;
+animation:moveBg 20s linear infinite;
+opacity:0.15;
+}
+
+@keyframes moveBg{
+from{transform:translate(0,0);}
+to{transform:translate(-200px,-200px);}
+}
+
 .container{
-max-width:600px;
+position:relative;
+max-width:700px;
+z-index:2;
+padding:20px;
+}
+
+.icon{
+font-size:50px;
+margin-bottom:10px;
 }
 
 h1{
 font-size:130px;
 color:#00d4ff;
-text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;
-animation: glow 2s infinite alternate;
+text-shadow:0 0 20px #00d4ff,0 0 50px #00d4ff;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #00d4ff;}
+to{ text-shadow:0 0 40px #00d4ff,0 0 80px #00d4ff;}
 }
 
 h2{
-font-size:35px;
+font-size:36px;
 margin-top:10px;
 }
 
 p{
-color:#bbb;
-margin:20px 0 30px;
+margin:20px 0;
+color:#ccc;
 font-size:18px;
+line-height:1.5;
 }
 
-.home-btn{
+.buttons{
+margin-top:30px;
+}
+
+.btn{
 display:inline-block;
-padding:15px 35px;
+padding:14px 30px;
+margin:10px;
 background:#00d4ff;
 color:black;
 font-weight:bold;
@@ -58,19 +95,10 @@ border-radius:40px;
 transition:0.3s;
 }
 
-.home-btn:hover{
+.btn:hover{
 background:white;
 transform:scale(1.1);
 box-shadow:0 0 20px #00d4ff;
-}
-
-@keyframes glow{
-from{
-text-shadow:0 0 10px #00d4ff;
-}
-to{
-text-shadow:0 0 30px #00d4ff,0 0 60px #00d4ff;
-}
 }
 
 </style>
@@ -80,13 +108,24 @@ text-shadow:0 0 30px #00d4ff,0 0 60px #00d4ff;
 
 <div class="container">
 
+<div class="icon">⚠️</div>
+
 <h1>404</h1>
 
-<h2>🎮 Game Over</h2>
+<h2>Page Not Found</h2>
 
-<p>The level you are trying to reach does not exist.</p>
+<p>
+The link you followed may be broken, or the page may have been removed.<br>
+Please check the URL or return to the homepage.
+</p>
 
-<a href="index.html" class="home-btn">Return to Home</a>
+<div class="buttons">
+
+<a href="index.html" class="btn">🏠 Home</a>
+
+<a href="index.html" class="btn">🎮 Browse Games</a>
+
+</div>
 
 </div>
 
