@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Blast Puzzle Game Online Free | UnixGame</title>
+
+<meta name="description" content="Block Blast Puzzle is a fun and addictive puzzle game where you drag and drop colorful blocks onto a grid | UnixGame">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<a href="javascript:history.back()">⬅ Back to Games</a>
+</div>
+
+  
+<!-------------h1 text for google to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
+Play Block Blast Puzzle Game Online Free
+</h1>
+<!-- image of the h1 -->
+<img src="gamemonitize/block-blast-puzzle/I[23].png" alt=" Block Blast Puzzle " style="width:100%; max-width:900px; display:block; margin:20px auto; border-radius:10px;">
+
+
+  
+<!-- GAME PLAYER -->
+<div class="game-container">
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://html5.gamemonetize.co/fx0o3r69oqzzat8ha5lvjmkdxjlmztxy/"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- GAME DETAILS -->
+<div class="game-info">
+
+<h2>About the Game</h2>
+<p>
+Block Blast Puzzle is a fun and addictive puzzle game where you drag and drop colorful blocks onto a grid. 
+Clear rows and columns by filling them completely to earn points. Plan your moves carefully — if theres no space left for the remaining blocks, 
+the game is over!
+</p>
+  
+<h2>How to Play</h2>
+<p>
+PC Controls: Mouse Click + Drag — Pick up a block and drag it onto the grid Mouse Release — Drop the block into position 
+Mobile Controls: Touch + Drag — Press and hold a block then drag it onto the grid Release — Drop the block int
+</p>
+  
+<h2>Developer</h2>
+<p>
+Block Blast Puzzle
+by Yellow Rat Games
+</p>
+
+</div>
+<script>
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
+}
+
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
+
+</script>
+</body>
+</html>
