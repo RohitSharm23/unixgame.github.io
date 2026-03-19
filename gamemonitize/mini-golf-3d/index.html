@@ -8,6 +8,7 @@
 <meta name="description" content="Mini Golf 3D is a smooth and addictive arcade experience with 40+ progressively challenging levels. | UnixGame">
 
 <style>
+
 body {
     margin: 0;
     padding: 0;
@@ -29,103 +30,72 @@ body {
     100% { background-position: 0% 50%, 50% 0%, 100% 50%; }
 }
 
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* HEADER */
-.header {
-    height: 70px;
-    background: #000;
-    display: flex;
-    align-items: center;
-    padding-left: 20px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
 }
 
-.header a {
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
 }
 
-/* GAME AREA - MOBILE RESPONSIVE */
-.game-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 10px;
-    max-width: 100%;
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
 }
 
-/* GAME WINDOW - RESPONSIVE */
-.game-box {
-    width: 100%;
-    max-width: 900px;
-    height: 60vh; /* Flexible height for mobile */
-    max-height: 500px;
-    background: black;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    aspect-ratio: 16/9; /* Maintains game proportions */
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
 }
 
-/* GAME IFRAME - FULL SIZE */
-.game-frame {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
 }
 
 /* FULLSCREEN BUTTON */
-.fullscreen-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #00d4ff;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    z-index: 10;
-    font-size: 14px;
-}
-
-/* MOBILE IMPROVEMENTS */
-@media (max-width: 768px) {
-    .game-box {
-        height: 70vh; /* Taller on mobile for better fit */
-        border-radius: 8px;
-        margin: 10px;
-    }
-    
-    .header {
-        padding-left: 15px;
-        height: 60px;
-    }
-    
-    .fullscreen-btn {
-        top: 5px;
-        right: 5px;
-        padding: 6px 10px;
-        font-size: 12px;
-    }
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
 }
 
 /* GAME INFO */
-.game-info {
-    max-width: 900px;
-    margin: 40px auto;
-    line-height: 1.6;
-    padding: 0 20px;
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
 }
 
-@media (max-width: 768px) {
-    .game-info {
-        padding: 0 15px;
-        margin: 20px auto;
-    }
-}
 </style>
 </head>
 
@@ -133,84 +103,85 @@ body {
 
 <!-- HEADER -->
 <div class="header">
-    <a href="javascript:history.back()">⬅ Back to Games</a>
+<a href="javascript:history.back()">⬅ Back to Games</a>
 </div>
 
-<!-------------h1 text for google to show the in the results---------------->
-<h1 style="text-align:center; margin:20px 20px 10px;">
-    Play Mini Golf 3D Game Online Free 
-</h1>
 
+<!-------------h1 text for google to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
+Play Mini Golf 3D Game Online Free 
+</h1>
 <!-- image of the h1 -->
-<img src="gamemonitize/mini-golf-3d/I[1].png" alt="Mini Golf 3D" style="width:100%; max-width:900px; display:block; margin:0 auto 20px; border-radius:10px;">
+<img src="gamemonitize/mini-golf-3d/I[1].png" alt="Mini Golf 3D " style="width:100%; max-width:900px; display:block; margin:20px auto; border-radius:10px;">
+
+  
 
 <!-- GAME PLAYER -->
 <div class="game-container">
-    <div class="game-box" id="gameBox">
-        <button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
-        
-        <!-- 🔴 PUT YOUR GAME LINK HERE -->
-        <iframe 
-            class="game-frame"
-            src="https://html5.gamemonetize.co/e3iz4assj31kbmfzgq647codbozk956c/"
-            allowfullscreen
-            scrolling="no"
-            allow="fullscreen">
-        </iframe>
-    </div>
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://html5.gamemonetize.co/e3iz4assj31kbmfzgq647codbozk956c/"
+allowfullscreen>
+</iframe>
+
+</div>
+
 </div>
 
 <!-- GAME DETAILS -->
 <div class="game-info">
-    <h2>About the Game</h2>
-    <p>
-        Mini Golf 3D is a smooth and addictive arcade experience with 40+ progressively challenging levels.
-        Aim, charge your shot, and strike with precision while avoiding sand traps that slow you down and water hazards that cost you a stroke.
-        Earn gems, unlock new colored balls, and master increasingly complex courses with responsive physics and satisfying gameplay.
-    </p>
-    <h2>How to Play</h2>
-    <p>Mouse click or tap to play</p>
-    <h2>Developer</h2>
-    <p>Mini Golf 3D by Mapi Games</p>
+
+<h2>About the Game</h2>
+<p>
+Mini Golf 3D is a smooth and addictive arcade experience with 40+ progressively challenging levels.
+Aim, charge your shot, and strike with precision while avoiding sand traps that slow you down and water hazards that cost you a stroke.
+Earn gems, unlock new colored balls, and master increasingly complex courses with responsive physics and satisfying gameplay.
+</p>
+<h2>How to Play</h2>
+<p>
+Mouse click or tap to play
+</p>
+<h2>Developer</h2>
+<p>
+Mini Golf 3D
+by Mapi Games
+</p>
+
 </div>
-
 <script>
-function openFullscreen() {
-    var game = document.getElementById("gameBox");
-    var btn = document.getElementById("fullscreenBtn");
 
-    if (game.requestFullscreen) {
-        game.requestFullscreen();
-    } else if (game.webkitRequestFullscreen) {
-        game.webkitRequestFullscreen();
-    } else if (game.msRequestFullscreen) {
-        game.msRequestFullscreen();
-    }
+function openFullscreen(){
 
-    btn.style.display = "none";
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
 }
 
-document.addEventListener("fullscreenchange", function() {
-    if (!document.fullscreenElement) {
-        document.getElementById("fullscreenBtn").style.display = "block";
-    }
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
 });
 
-// Prevent zoom on iOS double-tap
-document.addEventListener('touchstart', function(event) {
-    if (event.touches.length > 1) {
-        event.preventDefault();
-    }
-}, { passive: false });
-
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function(event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
 </script>
 </body>
 </html>
