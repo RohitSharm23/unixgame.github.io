@@ -3,73 +3,986 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unixgame- Play free online Games</title>
-    
-    <link rel="stylesheet" href="assets/style.css">
- 
+    <title>Unixgame - Ultimate Gaming Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d4ff;
+            text-decoration: none;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,212,255,0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231a1a2e" width="1200" height="600"/><circle fill="%2300d4ff" opacity="0.1" cx="200" cy="150" r="100"/><circle fill="%23ff6b35" opacity="0.1" cx="1000" cy="400" r="150"/><rect fill="%230f3460" opacity="0.3" x="300" y="300" width="200" height="100"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00d4ff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px #00d4ff); }
+            to { filter: drop-shadow(0 0 30px #00d4ff); }
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a2e;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #00d4ff;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* DEVELOPER CARD - CLEAN WHITE DESIGN (NO ORANGE) */
+        .developer-section {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 4rem 2rem;
+            margin: 4rem 2rem 0;
+            border-radius: 25px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+            position: relative;
+            border: 2px solid #00d4ff;
+        }
+
+        .developer-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(0,212,255,0.3);
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .developer-card h2 {
+            color: #1a1a2e;
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .developer-card p {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .dev-access-btn {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,212,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dev-access-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0,212,255,0.6);
+            background: linear-gradient(45deg, #0099cc, #00d4ff);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 3rem 2rem 1rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00d4ff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Developer Console Styles (UNCHANGED) */
+        .dev-console {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 4000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .console-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 70%, #0f3460 100%);
+            padding: 0;
+            border-radius: 20px;
+            max-width: 95%;
+            max-height: 90vh;
+            width: 1200px;
+            height: 700px;
+            position: relative;
+            border: 3px solid #00d4ff;
+            box-shadow: 0 20px 60px rgba(0,212,255,0.3);
+            overflow: hidden;
+        }
+
+        .console-header {
+            background: rgba(0,212,255,0.1);
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0,212,255,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #00d4ff;
+        }
+
+        .close-console {
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ff6b35;
+            transition: all 0.3s ease;
+        }
+
+        .close-console:hover { 
+            transform: scale(1.2); 
+            color: #ff4757; 
+        }
+
+        .console-tabs {
+            display: flex;
+            background: rgba(0,212,255,0.1);
+            border-bottom: 1px solid rgba(0,212,255,0.2);
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            background: transparent;
+            color: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            color: #00d4ff;
+            background: rgba(0,212,255,0.2);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+            height: calc(100% - 140px);
+            overflow-y: auto;
+        }
+
+        .tab-content.active { 
+            display: block; 
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            border-left: 4px solid #00d4ff;
+        }
+
+        .status-card.online { 
+            background: rgba(0,255,0,0.1); 
+            border-left-color: #00ff00; 
+        }
+
+        .status-card.warning { 
+            background: rgba(255,193,7,0.1); 
+            border-left-color: #ffc107; 
+        }
+
+        .status-card h3 { 
+            color: #00d4ff; 
+            margin-bottom: 0.5rem; 
+        }
+
+        .quick-actions, .admin-panel {
+            background: rgba(255,255,255,0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(0,212,255,0.3);
+        }
+
+        .action-btn, .btn-danger, .btn-success, .btn-warning {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 0.5rem 0.25rem 0.25rem 0;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-danger { 
+            background: #ff4757; 
+            color: white; 
+        }
+
+        .btn-success { 
+            background: #2ed573; 
+            color: white; 
+        }
+
+        .btn-warning { 
+            background: #ffa502; 
+            color: white; 
+        }
+
+        .action-btn:hover { 
+            transform: translateY(-2px); 
+            opacity: 0.9; 
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0,212,255,0.1);
+            border-radius: 10px;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 0.25rem;
+        }
+
+        .debug-terminal {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: #000;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .terminal-output {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #00ff00;
+            background: #001100;
+            border-radius: 5px;
+            max-height: 300px;
+        }
+
+        .terminal-input {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: #001a00;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        #debugInput {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #00d4ff;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(0,212,255,0.5);
+            border-radius: 8px;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .console-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(0,212,255,0.3);
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .developer-section {
+                margin: 2rem 1rem 0;
+                padding: 2rem 1rem;
+            }
+
+            .developer-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .developer-card h2 {
+                font-size: 2rem;
+            }
+
+            .console-content {
+                width: 98%;
+                height: 95vh;
+                margin: 1rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">GameZone</a>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#games">Games.html</a></li>
+                <li><a href="#tournaments">Tournaments</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#about us">About.html</a></li>
+            </ul>
 
-    <nav class="navbar">
-        <div class="logo">Unixgame</div>
-        
-        <div class="hamburger" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-        
-        <div class="auth-buttons" id="authButtons">
-            <a href="login" class="btn btn-auth">Login</a>
-            <a href="signup.html" class="btn btn-auth">Sign Up</a>
-        </div>
-    </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
 
-    <section class="hero">
-        <h1>Ready to Play?</h1>
-        <p class="hero-subtitle">Join millions of gamers worldwide</p>
-        <a href="games.html" class="btn play-btn">▶ PLAY NOW</a>
-        
-        <div class="features">
-            <div class="feature">
-                <h3>⚡ Instant Play</h3>
-                <p>No downloads required</p>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="feature">
-                <h3>👥 Multiplayer</h3>
-                <p>Challenge friends worldwide</p>
-            </div>
-            <div class="feature">
-                <h3>🏆 Leaderboards</h3>
-                <p>Compete for top spots</p>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome toUnixgame</h1>
+            <p>Welcome to UnixGame, your ultimate destination for playing free online games.
+            Discover a wide collection of action, racing, puzzle, and adventure games that you can play instantly without downloads. 
+            We bring you the best browser games for both mobile and desktop users.</p>
+            <div>
+                <a href="games.html" class="btn btn-primary" style="font-size: 1.2rem; padding: 1rem 2rem;">Explore Games</a>
+                <a href="signup.html" class="btn btn-secondary" style="font-size: 1.2rem; padding: 1rem 2rem; margin-left: 1rem;">Start Playing</a>
             </div>
         </div>
     </section>
 
-    <!-------------------------------------------- Developers Section - Middle & Prominent ------------------------------------------------------------------------------->
-    <section class="developers-section">
-        <h2>For Developers</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
-            Build amazing games and join our platform!
-        </p>
-        <a href="developer.html" class="developers-btn">🚀 Start Building</a>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Choose GameZone?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎮</div>
+                <h3>30+ Games</h3>
+                <p>From action to strategy, find your perfect game with our massive library.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Daily Tournaments</h3>
+                <p>Compete for real prizes and glory in our exciting tournaments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Gaming Community</h3>
+                <p>Connect with gamers</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Zero Lag</h3>
+                <p>Global servers ensure smooth gameplay wherever you are.</p>
+            </div>
+        </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-links">
-            <a href="privacy.html">Privacy policy</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">contact us</a>
+    <!-- CLEAN DEVELOPER CARD SECTION (NO ORANGE) -->
+    <section class="developer-section">
+        <div class="developer-card">
+            <h2>🔧 Developer Access</h2>
+            <p>Admin Console • Server Controls • Live Stats • Debug Tools</p>
+            <button class="dev-access-btn" onclick="openDevConsole()">
+                🚀 Open Developer Console
+            </button>
         </div>
-        <p>&copy; 2026 Unixgame. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Unixgame</h3>
+                <p>The ultimate destination for gamers. Play, compete, and connect.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="#games.html">Games</a>
+                <a href="#tournaments">Tournaments</a>
+                <a href="about.html">About Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <a href="support.html">Help Center</a>
+                <a href="mailto:support@gamezone.com">support@gamezone.com</a>
+              <!-----<a href="tel:+919876543210">+91 98765 43210</a>----->
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Unixgame. All rights reserved. | Built with passion for gamers</p>
+        </div>
     </footer>
 
-    <script src="assets/scripts.js"></script>
-</body>
-</html>
+    <!-- Developer Console Modal (UNCHANGED) -->
+    <div class="dev-console" id="devConsole">
+        <div class="console-content">
+            <div class="console-header">
+                <h2>🚀 GameZone Developer Console v2.1.0</h2>
+                <span class="close-console" onclick="closeDevConsole()">&times;</span>
+            </div>
+            
+            <div class="console-tabs">
+                <button class="tab-btn active" onclick="switchTab(event, 'dashboard')">Dashboard</button>
+                <button class="tab-btn" onclick="switchTab(event, 'stats')">Stats</button>
+                <button class="tab-btn" onclick="switchTab(event, 'admin')">Admin</button>
+                <button class="tab-btn" onclick="switchTab(event, 'debug')">Debug</button>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="status-grid">
+                    <div class="status-card online">
+                        <h3>🟢 Server Status</h3>
+                        <p>All systems operational</p>
+                    </div>
+                    <div class="status-card online">
+                        <h3>👥 Active Players</h3>
+                        <p id="activePlayers">12,847</p>
+                    </div>
+                    <div class="status-card warning">
+                        <h3>⚡ Performance</h3>
+                        <p>98.7% uptime</p>
+                    </div>
+                    <div class="status-card online">
+                        <h3>💰 Revenue</h3>
+                        <p>$24.5K today</p>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <button class="action-btn" onclick="simulateMaintenance()">Maintenance Mode</button>
+                    <button class="action-btn btn-success" onclick="clearCache()">Clear Cache</button>
+                    <button class="action-btn btn-warning" onclick="restartServices()">Restart Services</button>
+                </div>
+            </div>
+
+            <!-- Stats Tab -->
+            <div class="tab-content" id="stats">
+                <canvas id="playerChart" width="400" height="200"></canvas>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1.2">1.2M</span>
+                        <span>Total Users</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="847">847K</span>
+                        <span>Monthly Active</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="245">245K</span>
+                        <span>Daily Sessions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Tab -->
+            <div class="tab-content" id="admin">
+                <div class="admin-panel">
+                    <h3>👑 Admin Controls</h3>
+                    <div class="form-group">
+                        <label>Ban Player</label>
+                        <input type="text" id="banInput" placeholder="Player username">
+                        <button class="btn-danger" onclick="banPlayer()">🚫 Ban</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Server Message</label>
+                        <input type="text" id="announceInput" placeholder="Global announcement">
+                        <button class="btn-success" onclick="sendAnnouncement()">📢 Send</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Game Server</label>
+                        <select id="serverSelect">
+                            <option value="eu-west">EU-West</option>
+                            <option value="us-east">US-East</option>
+                            <option value="asia-sg">Asia-SG</option>
+                            <option value="india-mum">India-MUM</option>
+                        </select>
+                        <button class="btn-warning" onclick="restartServer()">🔄 Restart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Debug Tab -->
+            <div class="tab-content" id="debug">
+                <div class="debug-terminal">
+                    <div class="terminal-output" id="terminalOutput">
+                        <div>[13:36:45] GameZone v2.1.0 initialized</div>
+                        <div>[13:36:46] All 12 servers online</div>
+                        <div>[13:36:47] Database synced - 1.2M users</div>
+                    </div>
+                    <div class="terminal-input">
+                        <span>> </span>
+                        <input type="text" id="debugInput" placeholder="Enter command..." onkeypress="handleDebugInput(event)">
+                    </div>
+                </div>
+            </div>
+
+            <div class="console-footer">
+                <button class="btn btn-primary" onclick="closeDevConsole()">Close Console</button>
+                <a href="admin.html" class="btn btn-secondary" target="_blank">Full Admin Panel →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            const authButtons = document.querySelector('.auth-buttons');
+            navLinks.classList.toggle('active');
+            authButtons.classList.toggle('active');
+        }
+
+        // Developer Console Functions
+        let currentTab = 'dashboard';
+
+        function openDevConsole() {
+            document.getElementById('devConsole').style.display = 'flex';
+            animateStats();
+            startTerminal();
+            drawChart();
+        }
+
+        function closeDevConsole() {
+            document.getElementById('devConsole').style.display = 'none';
+        }
+
+        function switchTab(event, tabName) {
+            currentTab = tabName;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        function simulateMaintenance() {
+            addNotification('🛠️ Maintenance mode activated for 5 minutes');
+        }
+
+        function clearCache() {
+            addNotification('🧹 Cache cleared successfully');
+        }
+
+        function restartServices() {
+            addNotification('🔄 Services restarted');
+        }
+
+        function banPlayer() {
+            const username = document.getElementById('banInput').value;
+            if (username) {
+                addNotification(`🚫 Player "${username}" banned successfully`);
+                document.getElementById('banInput').value = '';
+            }
+        }
+
+        function sendAnnouncement() {
+            const message = document.getElementById('announceInput').value;
+            if (message) {
+                addNotification(`📢 Global announcement sent: "${message}"`);
+                document.getElementById('announceInput').value = '';
+            }
+        }
+
+        function restartServer() {
+            const server = document.getElementById('serverSelect').value;
+            addNotification(`🔄 Server ${server.toUpperCase()} restarted`);
+        }
+
+        function addNotification(message) {
+            const terminal = document.getElementById('terminalOutput');
+            const time = new Date().toTimeString().split(' ')[0];
+            terminal.innerHTML += `<div>[${time}] ${message}</div>`;
+            terminal.scrollTop = terminal.scrollHeight;
+        }
+
+        function handleDebugInput(event) {
+            if (event.key === 'Enter') {
+                const command = document.getElementById('debugInput').value;
+                addNotification(`> ${command}`);
+                if (command === 'status') addNotification('All systems operational');
+                else if (command === 'users') addNotification('1,247,893 total users');
+                else if (command === 'clear') document.getElementById('terminalOutput').innerHTML = '';
+                else addNotification('Command not recognized');
+                document.getElementById('debugInput').value = '';
+            }
+        }
+
+        function animateStats() {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseFloat(stat.dataset.target.replace(/[KM]/, '')) * (stat.dataset.target.includes('K') ? 1000 : 1000000);
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = (Math.floor(current / 1000) / 1000).toLocaleString() + (stat.dataset.target.includes('K') ? 'K' : 'M');
+                }, 20);
+            });
+        }
+
+        function startTerminal() {
+            setInterval(() => {
+                const messages = [
+                    'Player matchmaking optimized',
+                    'Anti-cheat system updated',
+                    'Tournament rewards distributed',
+                    'New game patch deployed'
+                ];
+                if (Math.random() > 0.7) {
+                    addNotification(messages[Math.floor(Math.random() * messages.length)]);
+                }
+            }, 8000);
+        }
+
+        function drawChart() {
+            const canvas = document.getElementById('playerChart');
+            const ctx = canvas.getContext('2d');
+            canvas.width = 500;
+            canvas.height = 250;
+            let frame = 0;
+            function animateChart() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.strokeStyle = '#00d4ff';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                for (let i = 0; i < 50; i++) {
+                    const x = (i / 50) * canvas.width;
+                    const wave = Math.sin((i + frame) * 0.1) * 30 + canvas.height / 2;
+                    if (i === 0) ctx.moveTo(x, wave);
+                    else ctx.lineTo(x, wave);
+                }
+                ctx.stroke();
+                frame += 2;
+                requestAnimationFrame(animateChart);
+            }
+            animateChart();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('devConsole');
+            if (event.target === modal) {
+                closeDevConsole();
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Particles
+        function createParticles() {
+            const hero = document.querySelector('.hero');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: 4px;
+                    height: 4px;
+                    background: rgba(0, 212,
