@@ -610,9 +610,9 @@ body {
                 <li><a href="About.html">About</a></li>
             </ul>
 
-            <div class="auth-buttons">
-                <a href="login.html" class="btn btn-secondary">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+          <ul class="auth-buttons">
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
             </div>
 
             <div class="mobile-menu" onclick="toggleMobileMenu()">
@@ -1082,6 +1082,10 @@ createParticles();
 .nav-links.active a,
 .auth-buttons.active a {
     margin: 0.5rem 0;
+}
+.nav-links,
+.auth-buttons {
+    transition: all 0.3s ease;
 }
 
         
