@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunset Bike Racing Game Online Free | UnixGame</title>
+
+<meta name="description" content="Sunset Bike Racing is a physics-stunt racer at golden hour—balance, flip, and flow across neon hills to chase records  | UnixGame ">
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Arial', sans-serif;
+    background: 
+        linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
+    background-size: 400% 400%;
+    animation: gentleShift 20s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes gentleShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Subtle floating particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: float 25s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Content overlay */
+.content {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body::before {
+        background-size: 150px 80px;
+    }
+}
+
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<a href="javascript:history.back()">⬅ Back to Games</a>
+</div>
+
+<!-------------h1 text for heading to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
+Play Sunset Bike Racing Game
+</h1>
+
+<!-- GAME PLAYER -->
+<div class="game-container">
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://kiz10.com/embed-play/sunset-bike-racing/?img=9972/1524686722_sunset-bike-racing.webp"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- GAME DETAILS -->
+<div class="game-info">
+
+<h2>About the Game</h2>
+<p>
+🌇 Throttle at golden hour
+The sun is melting into the horizon and the track glows like hot copper wire. Your bike idles with a low feline purr, the first dune breathes, and Sunset Bike Racing calmly asks the only question that matters: how brave is your right thumb? One squeeze and the front wheel kisses the sky. 
+Another and the whole machine becomes a silhouette stitched to the horizon, rider and frame etched against a band of orange that makes every mistake feel cinematic and every perfect landing feel like a tiny miracle you earned.
+🏍️ Gravity is a rumor, timing is law
+This isn’t about flooring it and hoping the physics feel generous. It’s a conversation with slopes. You lean forward to bite into a downhill and steal speed the way surfers steal from waves; you lean back at the lip so the bike arcs like a question mark, then nudge a micro-tilt midair to line the landing so clean the shocks applaud in private. 
+Gas early on a climb and you bog; gas late on a crest and you float like a secret. The best players hear the track as a rhythm section—rise, hold, drop, pulse—and ride inside the beat until the sunset looks like it’s moving for them.
+🔥 Flow state with teeth
+Sunset Bike Racing gives you just enough rope to hang your ego and just enough forgiveness to try again with a grin. Early runs are a dance of small saves: a nose that dives a little too eagerly, a back tire that taps a rock and wobbles your confidence, a flip you commit to half a heartbeat too soon. But the game is tuned for learning by feeling.
+The throttle curve is honest, the lean window is generous, the landing detection is strict in the way good teachers are strict. When you nail two hills and a whoop section in one continuous breath, the track stops being a series of bumps and becomes one long sentence you’re proud to have written.
+🌬️ The personality of terrain
+Hills aren’t copy-paste humps; they’re moods. A long shallow swell wants you low and hungry, nose down, chain singing as you harvest speed. 
+A sharp shark-fin requires a hop like punctuation—pop, turn, tuck, land. Stair-step mesas trade altitude for momentum and dare you to manual the flats with a whisper of throttle so the front wheel never quite returns to earth. Wind burbles in canyons,
+dust hangs in the air like glitter, and the whole world seems to hold its breath when your back tire skims a ridge by a syllable and you decide to keep the flip because of course you do.
+💫 Tricks that matter because landings matter
+Flips aren’t decoration here; they’re geometry. A backflip can re-aim the bike for a landing that otherwise would have punished your teeth. A quick bar tweak bleeds height without donating speed. Tuck too aggressively and you rotate into comedy; wait a fraction and you rotate into style. The best feeling is the planned accident: you launch slightly too hot, commit to a double, float a heartbeat longer than your fear expected, and somehow set both tires down in a shower of dust as the crowd in your head goes wild.
+🛠️ Upgrades that feel like confidence
+Between runs you swap sprockets, stiffen suspension, shave weight, and fit a pipe that gives the idle a polite menace. Nothing breaks balance; everything tightens your handwriting on the track. A stronger engine doesn’t fix bad habits—it rewards good lines. Better shocks don’t ignore mistakes—they cushion experiments just enough that you’ll try the high route you’ve been glaring at all evening. Cosmetics follow attitude: matte midnight frames for the night riders, sunset fades that match the sky, a minimal number plate that quietly claims you’re here for business.
+🎯 Short goals, long obsessions
+Every segment whispers a dare. Touch the checkpoint with a wheel in the air. Clear the canyon without tapping brake. Thread the rock arch while holding a manual because your inner show-off said so. The star system applauds more than speed: clean landings, trick variety, consistent throttle discipline. Leaderboards are close enough to smell; you’ll see a rival one tenth ahead and know exactly which crest you botched. Ghosts don’t taunt; they teach, gliding into view just long enough to show that the fast line isn’t reckless—it’s deliberate.
+🌈 Biomes that remix the sunset
+The desert opens the album—wide, legible, honest. Canyonlands add stiffer wind and bones of old bridges to goose your pathing. Coastal cliffs drape the horizon in violet and throw cross-breezes that nudge your flight like a friend who tells better jokes than you. Neon badlands flip the palette to electric dusk, rails and scaffolds letting you ride geometry that feels illegal but isn’t. Each environment adds one mechanic, then remixes it until you own it.
+🔊 Sound that syncs to your pulse
+Chain clatter turns into a metronome on smooth sections. The engine note rises through a scale you’ll hear even when you’re not playing; it becomes the cue for when to lean, when to feather, when to fully commit. Landings have timbre: dusty thuds for soft sand, hollow clacks for steel plates, a delicious elastic slap when both tires return from a big float at exactly the same instant. The music doesn’t bully; it swells when your combo counter glows and hushes during the tense tick-tock of a long glide where you’re managing angle with more prayer than science.
+🧠 Tiny techniques, huge payoffs
+Feather the throttle as you crest; full gas at the lip kicks the nose up, while a brief lift lets you shoot low and fast. Pre-load a hop by leaning back into a small dip—your suspension banks a spring you can cash out at the next ridge. If you must brake, do it midair; scrubbing speed on the ground steals flow, but a tiny tap in the sky adjusts your landing without taxing the soul of your run. When two lines present themselves, choose the one that exits cleaner, not the one that looks heroic. Heroics come free once you’ve banked exit speed.
+📱🎮 Controls that disappear
+On desktop, the keys map to instinct: press to accelerate, lean with a soft touch, correct midair without wrestle. On mobile, the throttle slider has just the right friction, and the tilt controls feel like a private conversation with your center of gravity. Input leniency rewards intent: if you meant a gentle nose-down nudge, the bike obliges; if you meant a full tuck through a double, it rotates like a compass needle finding north.
+🧭 Progress that respects your time
+Runs are snackable, checkpoints are fair, restarts are instant. You can carve three hills on a coffee break or spend an hour routing a perfect silver-to-gold upgrade on a late-game course that asks you to be both brave and neat. Daily challenges mix a familiar track with a silly twist—low-gravity sunset, slippery dust, a “no flip” rule that turns restraint into high art. It’s the kind of loop that slides around your day without derailing it, then steals your evening because you almost beat that ghost and, honestly, how hard can one more try be.
+🏆 The moment you’ll brag about
+You crest too hot into a canyon, realize the landing will be short, and your stomach drops. Then the training shows up: lean back, commit to the double, breathe in the quiet between engine notes. The arc extends, dust hangs, the horizon becomes a stage light. You float a heartbeat beyond reason, tick the nose down with a civilized tap, and both tires kiss the down-slope so sweetly the shock oil writes you a thank-you letter. The timer blinks a personal best and the sky applauds in orange and gold. You didn’t get lucky. You learned the track’s language and spoke it without an accent.
+<h2>How to Play</h2>
+<p>
+Use Keyboard
+</p>
+<h2>Developer</h2>  
+<p>
+Sunset Bike Racing - Motorcycle Racing Game by kiz10.com
+</p>
+
+</div>
+<script>
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
+}
+
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
+
+</script>
+</body>
+</html>
