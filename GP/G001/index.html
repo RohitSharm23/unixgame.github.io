@@ -3,17 +3,77 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Play Game</title>
+<title>MR RACER - Car Racing Game Online Free | UnixGame</title>
 
+<meta name="description" content="Step into the world of high-speed thrills with MR RACER - Car Racing. | UnixGame">
 <style>
 
-body{
-margin:0;
-font-family:Arial;
-background:#0f172a;
-color:white;
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Arial', sans-serif;
+    background: 
+        linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
+    background-size: 400% 400%;
+    animation: gentleShift 20s ease infinite;
+    position: relative;
+    overflow-x: hidden;
 }
 
+@keyframes gentleShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Subtle floating particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: float 25s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Content overlay */
+.content {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body::before {
+        background-size: 150px 80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  .game-container .game-box{
+    width:100% !important;
+    height:300px !important;
+    aspect-ratio:16/9;
+  }
+}
 /* HEADER */
 .header{
 height:70px;
@@ -83,6 +143,13 @@ padding:0 20px;
 <div class="header">
 <a href="javascript:history.back()">⬅ Back to Games</a>
 </div>
+
+<!-------------h1 text for google to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
+ MR RACER - Car Racing
+</h1>
+
 
 <!-- GAME PLAYER -->
 <div class="game-container">
