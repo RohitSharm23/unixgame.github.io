@@ -66,10 +66,10 @@ body::before {
         background-size: 150px 80px;
     }
 }
-@media (max-width: 768px) {
-  .game-box{
-    height:26px; /* adjust this value as you like */
-    width:80%;    /* optional: better fit on small screens */
+@media only screen and (max-width: 768px) {
+  .game-container .game-box{
+    width:100% !important;
+    height:220px !important;
   }
 }
 /* HEADER */
