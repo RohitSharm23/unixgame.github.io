@@ -12,19 +12,47 @@
 
 <style>
 
+/* YOUR ORIGINAL STYLES HERE - keep everything until .fullscreen-btn */
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     width: 100vw;
     font-family: 'Arial', sans-serif;
-    background: 
-        linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
     background-size: 400% 400%;
     animation: gentleShift 20s ease infinite;
     position: relative;
     overflow-x: hidden;
 }
+/* ... keep all your original CSS exactly the same until the end ... */
+
+/* ADD THESE NEW MOBILE FULLSCREEN RULES */
+@media (max-width: 1024px) {
+    body.fullscreen-active {
+        background: black !important;
+        overflow: hidden !important;
+    }
+    .header, h1, .game-info, .game-container {
+        display: none !important;
+    }
+    .game-box {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 99999 !important;
+        background: black !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .fullscreen-btn { display: none !important; }
+}
+
 
 @keyframes gentleShift {
     0%, 100% { background-position: 0% 50%; }
@@ -207,23 +235,47 @@ by Mapi Games
 </div>
 <script>
 
+let isMobileFullscreen = false;
+
 function openFullscreen() {
-    var gameBox = document.getElementById("gameBox");
-    var btn = document.getElementById("fullscreenBtn");
+    const gameBox = document.getElementById("gameBox");
+    const iframe = gameBox.querySelector("iframe");
+    const btn = document.getElementById("fullscreenBtn");
     
-    // Fullscreen API
-    if (gameBox.requestFullscreen) gameBox.requestFullscreen();
-    else if (gameBox.webkitRequestFullscreen) gameBox.webkitRequestFullscreen();
-    else if (gameBox.msRequestFullscreen) gameBox.msRequestFullscreen();
+    // Add class for CSS fullscreen
+    document.body.classList.add("fullscreen-active");
+    isMobileFullscreen = true;
+    
+    // Try iframe's own fullscreen
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen().catch(() => {});
+    } else if (iframe.webkitRequestFullscreen) {
+        iframe.webkitRequestFullscreen().catch(() => {});
+    } else if (iframe.contentWindow && iframe.contentWindow.document) {
+        // Fallback: game detects fullscreen
+        gameBox.style.position = "fixed";
+        gameBox.style.top = "0";
+        gameBox.style.left = "0";
+        gameBox.style.width = "100vw";
+        gameBox.style.height = "100vh";
+        gameBox.style.zIndex = "99999";
+    }
     
     btn.style.display = "none";
 }
 
 document.addEventListener("fullscreenchange", function() {
-    if (!document.fullscreenElement) {
+    if (!document.fullscreenElement && isMobileFullscreen) {
+        document.body.classList.remove("fullscreen-active");
         document.getElementById("fullscreenBtn").style.display = "block";
+        isMobileFullscreen = false;
     }
 });
+
+// Touch device auto-fullsize
+if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    document.getElementById("fullscreenBtn").style.display = "block";
+}
 
 </script>
 </body>
