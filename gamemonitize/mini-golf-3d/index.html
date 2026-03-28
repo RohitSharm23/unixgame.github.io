@@ -11,21 +11,19 @@
 <meta name="twitter:image" content="https://unixgame.online/gamemonitize/mini-golf-3d/I[1].png">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
     font-family: 'Arial', sans-serif;
     background: 
         linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
     background-size: 400% 400%;
     animation: gentleShift 20s ease infinite;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
+    position: relative;
+    overflow-x: hidden;
 }
 
 @keyframes gentleShift {
@@ -33,198 +31,145 @@ body {
     50% { background-position: 100% 50%; }
 }
 
-/* MOBILE FULLSCREEN - Hides EVERYTHING browser-related */
-@media (max-width: 768px) {
-    body {
-        background: black;
-    }
-    
-    /* Fullscreen game container */
-    .game-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: 99999;
-    }
-    
-    /* Fullscreen game box */
-    .game-box {
-        width: 100vw !important;
-        height: 100vh !important;
-        background: black;
-        border-radius: 0 !important;
-        overflow: hidden;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        margin: 0 !important;
-        z-index: 99999;
-    }
-    
-    /* FULLSCREEN IFRAME - Takes entire viewport */
-    .game-frame {
-        width: 100vw !important;
-        height: 100vh !important;
-        border: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 100000;
-    }
-    
-    /* TAP TO PLAY BUTTON - Large, centered overlay (MOBILE ONLY) */
-    .tap-to-play {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(45deg, #00d4ff, #0099cc);
-        color: white;
-        border: none;
-        padding: 25px 50px;
-        font-size: 28px;
-        font-weight: bold;
-        border-radius: 50px;
-        cursor: pointer;
-        z-index: 100001;
-        box-shadow: 0 20px 40px rgba(0,212,255,0.4);
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        animation: pulse 2s infinite;
-        backdrop-filter: blur(10px);
-        min-width: 280px;
-        text-align: center;
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: translate(-50%, -50%) scale(1); }
-        50% { transform: translate(-50%, -50%) scale(1.05); }
-    }
-    
-    /* Hide all other elements on mobile */
-    .header, h1, .game-info, .fullscreen-btn {
-        display: none !important;
-    }
-}
-
-/* DESKTOP - Normal layout */
-@media (min-width: 769px) {
-    body {
-        overflow-x: hidden;
-        min-height: 100vh;
-    }
-    
-    .game-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-        padding-bottom: 40px;
-    }
-    
-    .game-box {
-        width: 900px;
-        height: 500px;
-        background: black;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        margin: 0 auto;
-    }
-    
-    .fullscreen-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: #00d4ff;
-        border: none;
-        padding: 8px 12px;
-        cursor: pointer;
-        border-radius: 5px;
-        font-weight: bold;
-        z-index: 100;
-        color: white;
-    }
-    
-    /* Hide tap-to-play button on desktop */
-    .tap-to-play {
-        display: none !important;
-    }
-    
-    .header {
-        height: 70px;
-        background: #000;
-        display: flex;
-        align-items: center;
-        padding-left: 20px;
-    }
-    
-    .header a {
-        color: white;
-        text-decoration: none;
-        font-size: 18px;
-    }
-    
-    .game-info {
-        max-width: 900px;
-        margin: 40px auto;
-        line-height: 1.6;
-        padding: 0 20px;
-        color: white;
-    }
-}
-
-/* Hide tap button after click */
-.tap-to-play.hidden {
-    display: none !important;
-}
-
-.game-frame {
+/* Subtle floating particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border: none;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: float 25s linear infinite;
+    pointer-events: none;
+    z-index: 1;
 }
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Content overlay */
+.content {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body::before {
+        background-size: 100px 50px;
+    }
+}
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER (Desktop only) -->
+<!-- HEADER -->
 <div class="header">
 <a href="javascript:history.back()">⬅ Back to Games</a>
 </div>
 
-<!-------------h1 text for google---------------->
-<h1 style="text-align:center; margin-top:20px; color: white;">
+
+<!-------------h1 text for google to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
 Play Mini Golf 3D 
 </h1>
+ 
 
 <!-- GAME PLAYER -->
 <div class="game-container">
+
 <div class="game-box" id="gameBox">
-    
-    <!-- FULLSCREEN BUTTON (Desktop only) -->
-    <button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreenDesktop()">⛶ Fullscreen</button>
-    
-    <!-- TAP TO PLAY BUTTON (Mobile only - hidden on desktop via CSS) -->
-    <button id="tapToPlayBtn" class="tap-to-play" onclick="startGame()">
-        👆 Tap to Play
-    </button>
-    
-    <!-- GAME IFRAME -->
-    <iframe 
-    class="game-frame"
-    id="gameFrame"
-    src="https://html5.gamemonetize.co/e3iz4assj31kbmfzgq647codbozk956c/"
-    allowfullscreen>
-    </iframe>
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://html5.gamemonetize.co/e3iz4assj31kbmfzgq647codbozk956c/"
+allowfullscreen>
+</iframe>
 
 </div>
+
 </div>
 
-<!-- GAME DETAILS (Desktop only) -->
+<!-- GAME DETAILS -->
 <div class="game-info">
+
 <h2>About the Game</h2>
 <p>
 Mini Golf 3D is a smooth and addictive arcade experience with 40+ progressively challenging levels.
@@ -237,88 +182,38 @@ Mouse click or tap to play
 </p>
 <h2>Developer</h2>
 <p>
-Mini Golf 3D by Mapi Games
+Mini Golf 3D
+by Mapi Games
 </p>
+
 </div>
-
 <script>
-// Detect mobile
-function isMobile() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
 }
 
-// TAP TO PLAY - Hide button and force fullscreen on mobile
-function startGame() {
-    const tapBtn = document.getElementById('tapToPlayBtn');
-    const gameFrame = document.getElementById('gameFrame');
-    
-    // Hide tap button
-    tapBtn.classList.add('hidden');
-    
-    // Force mobile fullscreen (hides URL bar)
-    if (isMobile()) {
-        // Multiple fullscreen attempts for better compatibility
-        setTimeout(() => {
-            if (document.documentElement.requestFullscreen) {
-                document.documentElement.requestFullscreen();
-            } else if (document.documentElement.webkitRequestFullscreen) {
-                document.documentElement.webkitRequestFullscreen();
-            }
-        }, 100);
-        
-        // Scroll to top and hide scrollbars
-        window.scrollTo(0, 1);
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.overflow = 'hidden';
-        
-        // Visual viewport fullscreen
-        if (window.visualViewport) {
-            window.visualViewport.requestFullscreen();
-        }
-    }
+btn.style.display="none";
+
 }
 
-// Desktop fullscreen
-function openFullscreenDesktop() {
-    const gameBox = document.getElementById("gameBox");
-    const btn = document.getElementById("fullscreenBtn");
-    
-    if (gameBox.requestFullscreen) {
-        gameBox.requestFullscreen();
-    } else if (gameBox.webkitRequestFullscreen) {
-        gameBox.webkitRequestFullscreen();
-    }
-    btn.style.display = "none";
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
 }
 
-// Auto-hide tap button after 5 seconds (mobile only)
-setTimeout(() => {
-    if (!document.getElementById('tapToPlayBtn').classList.contains('hidden')) {
-        document.getElementById('tapToPlayBtn').classList.add('hidden');
-    }
-}, 5000);
-
-// Handle orientation change and fullscreen
-window.addEventListener('orientationchange', () => {
-    setTimeout(startGame, 500);
 });
 
-// Auto-start on mobile after short delay
-if (isMobile()) {
-    setTimeout(() => {
-        if (!document.getElementById('tapToPlayBtn').classList.contains('hidden')) {
-            startGame();
-        }
-    }, 2000);
-}
-
-// Fullscreen change handler
-document.addEventListener('fullscreenchange', function() {
-    if (!document.fullscreenElement && isMobile()) {
-        // Re-apply fullscreen styles
-        document.body.style.overflow = 'hidden';
-    }
-});
 </script>
 </body>
 </html>
