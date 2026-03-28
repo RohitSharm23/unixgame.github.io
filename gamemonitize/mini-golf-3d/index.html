@@ -188,32 +188,42 @@ by Mapi Games
 
 </div>
 <script>
+  // Detect if on mobile (Android or iOS)
+  function isMobile() {
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
 
-function openFullscreen(){
+  // Try to enter fullscreen for the game box
+  function openFullscreen() {
+    const game = document.getElementById("gameBox");
+    const btn = document.getElementById("fullscreenBtn");
 
-var game=document.getElementById("gameBox");
-var btn=document.getElementById("fullscreenBtn");
+    if (game.requestFullscreen) {
+      game.requestFullscreen();
+    } else if (game.webkitRequestFullscreen) {
+      game.webkitRequestFullscreen();
+    } else if (game.msRequestFullscreen) {
+      game.msRequestFullscreen();
+    }
 
-if(game.requestFullscreen){
-game.requestFullscreen();
-}else if(game.webkitRequestFullscreen){
-game.webkitRequestFullscreen();
-}else if(game.msRequestFullscreen){
-game.msRequestFullscreen();
-}
+    if (btn) btn.style.display = "none";
+  }
 
-btn.style.display="none";
+  // When fullscreen is exited, show the button again
+  document.addEventListener("fullscreenchange", function () {
+    const btn = document.getElementById("fullscreenBootomBtn");
+    if (!document.fullscreenElement) {
+      btn.style.display = "block";
+    }
+  });
 
-}
-
-document.addEventListener("fullscreenchange",function(){
-
-if(!document.fullscreenElement){
-document.getElementById("fullscreenBtn").style.display="block";
-}
-
-});
-
+  // On mobile, enter fullscreen as soon as page loads
+  if (isMobile()) {
+    // Wait for the page to load, then go fullscreen
+    window.addEventListener("load", function () {
+      openFullscreen();
+    });
+  }
 </script>
 </body>
 </html>
