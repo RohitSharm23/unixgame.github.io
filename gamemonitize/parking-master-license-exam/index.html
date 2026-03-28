@@ -153,7 +153,7 @@ padding:0 20px;
   transition:0.3s;
 }
 
-.action-bar button:hover{
+.action-bar button.active{
   background:#00d4ff;
   color:black;
 }
@@ -192,9 +192,15 @@ allowfullscreen>
 
 </div>
 
-<div class="action-bar">
-  <button onclick="likeGame()">👍 Like <span id="likeCount">0</span></button>
-  <button onclick="dislikeGame()">👎 Dislike <span id="dislikeCount">0</span></button>
+<<div class="action-bar">
+  <button id="likeBtn" onclick="handleLike()">
+    👍 <span id="likeCount">0</span>
+  </button>
+
+  <button id="dislikeBtn" onclick="handleDislike()">
+    👎 <span id="dislikeCount">0</span>
+  </button>
+
   <button onclick="reportGame()">🚩 Report</button>
 </div>
 
@@ -252,19 +258,52 @@ document.getElementById("fullscreenBtn").style.display="block";
 let likes = 0;
 let dislikes = 0;
 
-function likeGame(){
-  likes++;
+let userAction = localStorage.getItem("gameAction"); // like / dislike / null
+
+function updateUI(){
   document.getElementById("likeCount").innerText = likes;
-}
-
-function dislikeGame(){
-  dislikes++;
   document.getElementById("dislikeCount").innerText = dislikes;
+
+  document.getElementById("likeBtn").classList.remove("active");
+  document.getElementById("dislikeBtn").classList.remove("active");
+
+  if(userAction === "like"){
+    document.getElementById("likeBtn").classList.add("active");
+  }
+  if(userAction === "dislike"){
+    document.getElementById("dislikeBtn").classList.add("active");
+  }
 }
 
-function reportGame(){
-  alert("Thanks for reporting! We'll review this game.");
+function handleLike(){
+  if(userAction === "like") return;
+
+  if(userAction === "dislike"){
+    dislikes--;
+  }
+
+  likes++;
+  userAction = "like";
+  localStorage.setItem("gameAction","like");
+
+  updateUI();
 }
+
+function handleDislike(){
+  if(userAction === "dislike") return;
+
+  if(userAction === "like"){
+    likes--;
+  }
+
+  dislikes++;
+  userAction = "dislike";
+  localStorage.setItem("gameAction","dislike");
+
+  updateUI();
+}
+
+updateUI();
 
 </script>
 </body>
