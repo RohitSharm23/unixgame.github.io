@@ -65,41 +65,10 @@ body::before {
 }
 
 /* Responsive adjustments */
-/* MOBILE‑ONLY: turn page into fullscreen‑like game view */
 @media (max-width: 768px) {
-
-  /* Hide header, info, and fullscreen button */
-  .header,
-  .game-info,
-  .fullscreen-btn {
-    display: none !important;
-  }
-
-  /* Make the page full screen */
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .game-container {
-    margin: 0;
-  }
-
-  /* Make game box fill the whole screen */
-  .game-box {
-    width: 100vw;
-    height: 100vh;
-    max-width: none;
-    border-radius: 0;
-  }
-
-  /* Make iframe fill the box */
-  .game-frame {
-    width: 100%;
-    height: 100%;
-  }
+    body::before {
+        background-size: 100px 50px;
+    }
 }
 /* HEADER */
 .header{
@@ -132,37 +101,6 @@ border-radius:10px;
 overflow:hidden;
 position:relative;
 }
-
-<div class="game-box" id="gameBox">
-
-  <!-- HOME BUTTON (mobile only) -->
-  <button id="backBtn"
-    style="
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(0,0,0,0.7);
-      color: white;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      z-index: 20;
-      display: none;
-    "
-    onclick="goBack()">
-    Home
-  </button>
-
-  <iframe
-    class="game-frame"
-    src="https://html5.gamemonetize.co/k7c9tnbbfosyh9fmp6ebwt3rv8zdlrg4/"
-    allowfullscreen>
-  </iframe>
-
-</div>
 
 
 /* GAME IFRAME */
@@ -251,22 +189,31 @@ by Mapi Games
 </div>
 <script>
 
-<script>
-  // Simple mobile detect
-  function isMobile() {
-    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
 }
 
-  // Go back to games page
-  function goBack() {
-    window.location.href = "games.html";  // <-- change to your menu page URL
+btn.style.display="none";
+
 }
 
-  // On mobile, show Home button and adjust layout
-  if (isMobile()) {
-    const btn = document.getElementById("backBtn");
-    if (btn) btn.style.display = "block";
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
 }
+
+});
+
 </script>
 </body>
 </html>
