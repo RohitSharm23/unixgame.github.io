@@ -65,9 +65,9 @@ body::before {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
-    body::before {
-        background-size: 100px 50px;
+@media (min-width: 1025px) {
+    .fullscreen-btn {
+        display: none !important;
     }
 }
 /* HEADER */
@@ -189,29 +189,32 @@ by Mapi Games
 </div>
 <script>
 
-function openFullscreen(){
-
-var game=document.getElementById("gameBox");
-var btn=document.getElementById("fullscreenBtn");
-
-if(game.requestFullscreen){
-game.requestFullscreen();
-}else if(game.webkitRequestFullscreen){
-game.webkitRequestFullscreen();
-}else if(game.msRequestFullscreen){
-game.msRequestFullscreen();
+function isMobileOrTablet() {
+    var ua = navigator.userAgent;
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) || /Tablet|iPad/i.test(ua);
 }
 
-btn.style.display="none";
+function openFullscreen() {
+    if (!isMobileOrTablet()) return; // Block on desktop
 
+    var game = document.getElementById("gameBox");
+    var btn = document.getElementById("fullscreenBtn");
+
+    if (game.requestFullscreen) {
+        game.requestFullscreen();
+    } else if (game.webkitRequestFullscreen) {
+        game.webkitRequestFullscreen();
+    } else if (game.msRequestFullscreen) {
+        game.msRequestFullscreen();
+    }
+
+    btn.style.display = "none";
 }
 
-document.addEventListener("fullscreenchange",function(){
-
-if(!document.fullscreenElement){
-document.getElementById("fullscreenBtn").style.display="block";
-}
-
+document.addEventListener("fullscreenchange", function() {
+    if (!document.fullscreenElement) {
+        document.getElementById("fullscreenBtn").style.display = "block";
+    }
 });
 
 </script>
