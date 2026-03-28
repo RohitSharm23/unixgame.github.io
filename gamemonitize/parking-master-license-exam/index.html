@@ -133,6 +133,31 @@ line-height:1.6;
 padding:0 20px;
 }
 
+.action-bar{
+  max-width:900px;
+  margin:20px auto;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.action-bar button{
+  background:#111;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  transition:0.3s;
+}
+
+.action-bar button:hover{
+  background:#00d4ff;
+  color:black;
+}
+
 </style>
 </head>
 
@@ -165,6 +190,12 @@ allowfullscreen>
 
 </div>
 
+</div>
+
+<div class="action-bar">
+  <button onclick="likeGame()">👍 Like <span id="likeCount">0</span></button>
+  <button onclick="dislikeGame()">👎 Dislike <span id="dislikeCount">0</span></button>
+  <button onclick="reportGame()">🚩 Report</button>
 </div>
 
 <!-- GAME DETAILS -->
@@ -217,6 +248,23 @@ document.getElementById("fullscreenBtn").style.display="block";
 }
 
 });
+
+let likes = 0;
+let dislikes = 0;
+
+function likeGame(){
+  likes++;
+  document.getElementById("likeCount").innerText = likes;
+}
+
+function dislikeGame(){
+  dislikes++;
+  document.getElementById("dislikeCount").innerText = dislikes;
+}
+
+function reportGame(){
+  alert("Thanks for reporting! We'll review this game.");
+}
 
 </script>
 </body>
