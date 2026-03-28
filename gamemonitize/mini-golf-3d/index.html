@@ -12,47 +12,19 @@
 
 <style>
 
-/* YOUR ORIGINAL STYLES HERE - keep everything until .fullscreen-btn */
 body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
     width: 100vw;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
+    background: 
+        linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
     background-size: 400% 400%;
     animation: gentleShift 20s ease infinite;
     position: relative;
     overflow-x: hidden;
 }
-/* ... keep all your original CSS exactly the same until the end ... */
-
-/* ADD THESE NEW MOBILE FULLSCREEN RULES */
-@media (max-width: 1024px) {
-    body.fullscreen-active {
-        background: black !important;
-        overflow: hidden !important;
-    }
-    .header, h1, .game-info, .game-container {
-        display: none !important;
-    }
-    .game-box {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        z-index: 99999 !important;
-        background: black !important;
-        border-radius: 0 !important;
-        margin: 0 !important;
-    }
-}
-
-@media (min-width: 1025px) {
-    .fullscreen-btn { display: none !important; }
-}
-
 
 @keyframes gentleShift {
     0%, 100% { background-position: 0% 50%; }
@@ -93,88 +65,136 @@ body::before {
 }
 
 /* Responsive adjustments */
-/* MOBILE FULLSCREEN ONLY */
-@media (max-width: 1024px) {
-    body { 
-        margin: 0 !important; 
-        padding: 0 !important; 
-        overflow: hidden !important; 
+@media (max-width: 768px) {
+    body::before {
+        background-size: 100px 50px;
     }
-    .header, h1, .game-info { display: none !important; }
-    .game-box { 
-        position: fixed !important; 
-        top: 0 !important; left: 0 !important; 
-        width: 100vw !important; 
-        height: 100vh !important; 
-        margin: 0 !important; 
-        border-radius: 0 !important; 
-        z-index: 9999 !important; 
+    
+    /* Hide fullscreen button on mobile/tablet */
+    .fullscreen-btn {
+        display: none !important;
+    }
+    
+    /* Fullscreen game box on mobile */
+    .game-box {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        max-height: none !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 9999 !important;
     }
 }
 
-/* HIDE BUTTON ON DESKTOP */
-@media (min-width: 1025px) {
-    .fullscreen-btn { display: none !important; }
-}
-/* HEADER */
-.header{
-height:70px;
-background:#000;
-display:flex;
-align-items:center;
-padding-left:20px;
+/* HEADER - Hide on mobile after fullscreen */
+@media (max-width: 768px) {
+    .header {
+        display: none;
+    }
+    
+    h1 {
+        display: none;
+    }
+    
+    .game-container {
+        margin-top: 0 !important;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        z-index: 10000;
+    }
+    
+    .game-info {
+        display: none;
+    }
 }
 
-.header a{
-color:white;
-text-decoration:none;
-font-size:18px;
+/* Desktop styles remain the same */
+@media (min-width: 769px) {
+    .game-box {
+        width: 900px;
+        height: 500px;
+        background: black;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        margin: 0 auto;
+    }
+    
+    .fullscreen-btn {
+        display: block;
+    }
 }
 
 /* GAME AREA */
-.game-container{
-display:flex;
-justify-content:center;
-margin-top:20px;
+.game-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 /* GAME WINDOW */
-.game-box{
-width:900px;
-height:500px;
-background:black;
-border-radius:10px;
-overflow:hidden;
-position:relative;
+.game-box {
+    width: 900px;
+    height: 500px;
+    background: black;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
 }
 
-
 /* GAME IFRAME */
-.game-frame{
-width:100%;
-height:100%;
-border:none;
+.game-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
 }
 
 /* FULLSCREEN BUTTON */
-.fullscreen-btn{
-position:absolute;
-top:10px;
-right:10px;
-background:#00d4ff;
-border:none;
-padding:8px 12px;
-cursor:pointer;
-border-radius:5px;
-font-weight:bold;
+.fullscreen-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #00d4ff;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    z-index: 100;
 }
 
 /* GAME INFO */
-.game-info{
-max-width:900px;
-margin:40px auto;
-line-height:1.6;
-padding:0 20px;
+.game-info {
+    max-width: 900px;
+    margin: 40px auto;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+/* HEADER */
+.header {
+    height: 70px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.header a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
 }
 
 </style>
@@ -187,35 +207,28 @@ padding:0 20px;
 <a href="javascript:history.back()">⬅ Back to Games</a>
 </div>
 
-
 <!-------------h1 text for google to show the in the results---------------->
   
 <h1 style="text-align:center; margin-top:20px;">
 Play Mini Golf 3D 
 </h1>
- 
 
 <!-- GAME PLAYER -->
 <div class="game-container">
-
 <div class="game-box" id="gameBox">
-<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreenDesktop()">⛶ Fullscreen</button>
 
 <!-- 🔴 PUT YOUR GAME LINK HERE -->
-  
 <iframe 
 class="game-frame"
 src="https://html5.gamemonetize.co/e3iz4assj31kbmfzgq647codbozk956c/"
 allowfullscreen>
 </iframe>
-
 </div>
-
 </div>
 
 <!-- GAME DETAILS -->
 <div class="game-info">
-
 <h2>About the Game</h2>
 <p>
 Mini Golf 3D is a smooth and addictive arcade experience with 40+ progressively challenging levels.
@@ -231,51 +244,58 @@ Mouse click or tap to play
 Mini Golf 3D
 by Mapi Games
 </p>
-
 </div>
+
 <script>
+// Check if mobile/tablet and auto-fullscreen
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+}
 
-let isMobileFullscreen = false;
-
-function openFullscreen() {
-    const gameBox = document.getElementById("gameBox");
-    const iframe = gameBox.querySelector("iframe");
-    const btn = document.getElementById("fullscreenBtn");
+function openFullscreenMobile() {
+    var game = document.getElementById("gameBox");
     
-    // Add class for CSS fullscreen
-    document.body.classList.add("fullscreen-active");
-    isMobileFullscreen = true;
-    
-    // Try iframe's own fullscreen
-    if (iframe.requestFullscreen) {
-        iframe.requestFullscreen().catch(() => {});
-    } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen().catch(() => {});
-    } else if (iframe.contentWindow && iframe.contentWindow.document) {
-        // Fallback: game detects fullscreen
-        gameBox.style.position = "fixed";
-        gameBox.style.top = "0";
-        gameBox.style.left = "0";
-        gameBox.style.width = "100vw";
-        gameBox.style.height = "100vh";
-        gameBox.style.zIndex = "99999";
+    if (game.requestFullscreen) {
+        game.requestFullscreen();
+    } else if (game.webkitRequestFullscreen) {
+        game.webkitRequestFullscreen();
+    } else if (game.msRequestFullscreen) {
+        game.msRequestFullscreen();
     }
-    
+}
+
+function openFullscreenDesktop() {
+    var game = document.getElementById("gameBox");
+    var btn = document.getElementById("fullscreenBtn");
+
+    if (game.requestFullscreen) {
+        game.requestFullscreen();
+    } else if (game.webkitRequestFullscreen) {
+        game.webkitRequestFullscreen();
+    } else if (game.msRequestFullscreen) {
+        game.msRequestFullscreen();
+    }
+
     btn.style.display = "none";
 }
 
-document.addEventListener("fullscreenchange", function() {
-    if (!document.fullscreenElement && isMobileFullscreen) {
-        document.body.classList.remove("fullscreen-active");
-        document.getElementById("fullscreenBtn").style.display = "block";
-        isMobileFullscreen = false;
+// Auto fullscreen on mobile/tablet when page loads
+window.addEventListener('load', function() {
+    if (isMobile()) {
+        // Small delay to ensure DOM is ready and styles are applied
+        setTimeout(function() {
+            openFullscreenMobile();
+        }, 500);
     }
 });
 
-// Touch device auto-fullsize
-if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    document.getElementById("fullscreenBtn").style.display = "block";
-}
+// Handle fullscreen exit on mobile (show controls again if needed)
+document.addEventListener("fullscreenchange", function() {
+    if (!document.fullscreenElement && isMobile()) {
+        // On mobile, stay in "fullscreen mode" even if browser exits fullscreen
+        document.body.style.overflow = 'hidden';
+    }
+});
 
 </script>
 </body>
