@@ -192,7 +192,7 @@ allowfullscreen>
 
 </div>
 
-<<div class="action-bar">
+<div class="action-bar">
   <button id="likeBtn" onclick="handleLike()">
     👍 <span id="likeCount">0</span>
   </button>
@@ -305,29 +305,23 @@ function handleDislike(){
 
 updateUI();
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyCoOL-BxAoPQ7OS2VoHXycrumWMAxDspjM",
-    authDomain: "game-likes.firebaseapp.com",
-    databaseURL: "https://game-likes-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "game-likes",
-    storageBucket: "game-likes.firebasestorage.app",
-    messagingSenderId: "425315266457",
-    appId: "1:425315266457:web:486774a255332977166d08",
-    measurementId: "G-LQ79C7CRD0"
-  };
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyCoOL-BxAoPQ7OS2VoHXycrumWMAxDspjM",
+  authDomain: "game-likes.firebaseapp.com",
+  databaseURL: "https://game-likes-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "game-likes",
+  storageBucket: "game-likes.firebasestorage.app",
+  messagingSenderId: "425315266457",
+  appId: "1:425315266457:web:486774a255332977166d08",
+  measurementId: "G-LQ79C7CRD0"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 </script>
 
 </script>
