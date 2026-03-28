@@ -74,7 +74,7 @@ body {
         z-index: 100000;
     }
     
-    /* TAP TO PLAY BUTTON - Large, centered overlay */
+    /* TAP TO PLAY BUTTON - Large, centered overlay (MOBILE ONLY) */
     .tap-to-play {
         position: fixed;
         top: 50%;
@@ -147,21 +147,9 @@ body {
         color: white;
     }
     
+    /* Hide tap-to-play button on desktop */
     .tap-to-play {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: linear-gradient(45deg, #00d4ff, #0099cc);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        font-size: 20px;
-        font-weight: bold;
-        border-radius: 30px;
-        cursor: pointer;
-        z-index: 101;
-        box-shadow: 0 10px 20px rgba(0,212,255,0.4);
+        display: none !important;
     }
     
     .header {
@@ -197,7 +185,6 @@ body {
     height: 100%;
     border: none;
 }
-
 </style>
 </head>
 
@@ -220,7 +207,7 @@ Play Mini Golf 3D
     <!-- FULLSCREEN BUTTON (Desktop only) -->
     <button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreenDesktop()">⛶ Fullscreen</button>
     
-    <!-- TAP TO PLAY BUTTON -->
+    <!-- TAP TO PLAY BUTTON (Mobile only - hidden on desktop via CSS) -->
     <button id="tapToPlayBtn" class="tap-to-play" onclick="startGame()">
         👆 Tap to Play
     </button>
@@ -304,7 +291,7 @@ function openFullscreenDesktop() {
     btn.style.display = "none";
 }
 
-// Auto-hide tap button after 5 seconds (optional)
+// Auto-hide tap button after 5 seconds (mobile only)
 setTimeout(() => {
     if (!document.getElementById('tapToPlayBtn').classList.contains('hidden')) {
         document.getElementById('tapToPlayBtn').classList.add('hidden');
@@ -332,7 +319,6 @@ document.addEventListener('fullscreenchange', function() {
         document.body.style.overflow = 'hidden';
     }
 });
-
 </script>
 </body>
 </html>
