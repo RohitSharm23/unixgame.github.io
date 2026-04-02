@@ -593,26 +593,41 @@
         </div>
     </main>
 
-  <script>
+ <script>
 const searchInput = document.querySelector('.search-input');
 const gameCards = document.querySelectorAll('.game-card');
+const gamesGrid = document.querySelector('.games-grid');
 
+// Create "No Results" message
+const noResult = document.createElement("div");
+noResult.textContent = "No games found 😢";
+noResult.style.textAlign = "center";
+noResult.style.marginTop = "20px";
+noResult.style.fontSize = "18px";
+noResult.style.display = "none";
+document.querySelector(".main-content").appendChild(noResult);
 
-searchInput.addEventListener('input', (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    
-    gameCards.forEach((card, index) => {
+searchInput.addEventListener('input', () => {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    let visibleCount = 0;
+
+    gameCards.forEach(card => {
         const title = card.querySelector('.game-title').textContent.toLowerCase();
-        const shouldShow = title.includes(searchTerm) || searchTerm === '';
-        
-        if (shouldShow) {
-            card.style.display = 'block';
-            card.style.gridColumnStart = (index % 3) + 1;  // Column 1,2,3
-            card.style.gridRowStart = Math.floor(index / 3) + 1;  // Row 1,2,3
+
+        if (title.includes(searchTerm)) {
+            card.classList.remove("hidden");
+            visibleCount++;
         } else {
-            card.style.display = 'none';
+            card.classList.add("hidden");
         }
     });
+
+    // Show "No Results" message
+    if (visibleCount === 0) {
+        noResult.style.display = "block";
+    } else {
+        noResult.style.display = "none";
+    }
 });
 </script>
 </body>
