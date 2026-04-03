@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Don't Fall! Online - Casual Game Online Free | UnixGame</title>
+
+<meta name="description" content="Don't Fall! Online takes a very simple idea and squeezes every drop of tension out of it. | UnixGame ">
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Arial', sans-serif;
+    background: 
+        linear-gradient(135deg, #2c3e50 0%, #3498db 25%, #667eea 50%, #4ecdc4 75%, #45b7d1 100%);
+    background-size: 400% 400%;
+    animation: gentleShift 20s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes gentleShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Subtle floating particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent);
+    background-repeat: repeat;
+    background-size: 200px 100px;
+    animation: float 25s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes float {
+    from { transform: translateY(0px) rotate(0deg); }
+    to { transform: translateY(-100px) rotate(360deg); }
+}
+
+/* Content overlay */
+.content {
+    position: relative;
+    z-index: 10;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body::before {
+        background-size: 150px 80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  .game-container .game-box{
+    width:100% !important;
+    height:300px !important;
+    aspect-ratio:16/9;
+  }
+}
+
+/* HEADER */
+.header{
+height:70px;
+background:#000;
+display:flex;
+align-items:center;
+padding-left:20px;
+}
+
+.header a{
+color:white;
+text-decoration:none;
+font-size:18px;
+}
+
+/* GAME AREA */
+.game-container{
+display:flex;
+justify-content:center;
+margin-top:20px;
+}
+
+/* GAME WINDOW */
+.game-box{
+width:900px;
+height:500px;
+background:black;
+border-radius:10px;
+overflow:hidden;
+position:relative;
+}
+
+/* GAME IFRAME */
+.game-frame{
+width:100%;
+height:100%;
+border:none;
+}
+
+/* FULLSCREEN BUTTON */
+.fullscreen-btn{
+position:absolute;
+top:10px;
+right:10px;
+background:#00d4ff;
+border:none;
+padding:8px 12px;
+cursor:pointer;
+border-radius:5px;
+font-weight:bold;
+}
+
+/* GAME INFO */
+.game-info{
+max-width:900px;
+margin:40px auto;
+line-height:1.6;
+padding:0 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+<a href="javascript:history.back()">⬅ Back to Games</a>
+</div>
+
+<!-------------h1 text for heading to show the in the results---------------->
+  
+<h1 style="text-align:center; margin-top:20px;">
+Don't Fall! Online - Casual Game
+</h1>
+
+<!-- GAME PLAYER -->
+<div class="game-container">
+
+<div class="game-box" id="gameBox">
+<button id="fullscreenBtn" class="fullscreen-btn" onclick="openFullscreen()">⛶ Fullscreen</button>
+
+<!-- 🔴 PUT YOUR GAME LINK HERE -->
+  
+<iframe 
+class="game-frame"
+src="https://kiz10.com/embed-play/dont-fall-online/?img=23606/1775153712_dont-fall-online.webp"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- GAME DETAILS -->
+<div class="game-info">
+
+<h2>About the Game</h2>
+<p>
+🟨 𝗧𝗛𝗘 𝗙𝗟𝗢𝗢𝗥 𝗜𝗦 𝗡𝗢𝗧 𝗦𝗔𝗙𝗘, 𝗜𝗧 𝗜𝗦 𝗢𝗡𝗟𝗬 𝗕𝗢𝗥𝗥𝗢𝗪𝗘𝗗<br>
+Don't Fall! Online takes a very simple idea and squeezes every drop of tension out of it. You spawn on a field made of hexagonal tiles, start moving, and from that moment on the ground begins disappearing behind you. There is no room for hesitation. No comfortable place to stop and think for too long. Every step changes the arena, and every second makes the survival problem a little worse for everyone still standing. That is what makes the game click so fast. It understands that pressure does not need to be complicated to feel intense.<br>
+This is an online survival arcade game built around motion, awareness, and ruthless little decisions. You are not just trying to stay alive. You are trying to stay alive while the floor vanishes, other players scramble around you, and the safe space keeps shrinking into something much meaner than it looked a second ago. The result is fast, funny, and much more tactical than the cheerful visuals first suggest.<br>
+🏃 𝗦𝗧𝗢𝗣𝗣𝗜𝗡𝗚 𝗜𝗦 𝗕𝗔𝗦𝗜𝗖𝗔𝗟𝗟𝗬 𝗔 𝗙𝗔𝗡𝗖𝗬 𝗪𝗔𝗬 𝗧𝗢 𝗟𝗢𝗦𝗘<br>
+The core rule of Don't Fall! Online is beautifully cruel. Keep moving. That is the whole law of the world, and the game sticks to it with no sympathy at all. The tiles disappear soon after you touch them, which means every path you take is temporary. You are always spending the terrain as you use it. That instantly creates a wonderful kind of tension, because movement stops being something casual and becomes something strategic.<br>
+At first, it feels easy enough. Step here, turn there, stay away from the edges, keep the rhythm going. Then more space disappears, more players cross your path, and suddenly your safe route becomes a trap. That is when the game gets interesting. It stops being about simple survival and starts becoming a tiny battle of spacing, prediction, and nerve.<br>
+That is why the movement feels so good. You are not running aimlessly. You are constantly making decisions about where to go next and where not to leave yourself stranded.<br>
+🧠 𝗧𝗛𝗘 𝗚𝗔𝗠𝗘 𝗟𝗢𝗢𝗞𝗦 𝗖𝗛𝗔𝗢𝗧𝗜𝗖, 𝗕𝗨𝗧 𝗧𝗛𝗘 𝗕𝗘𝗦𝗧 𝗣𝗟𝗔𝗬𝗘𝗥𝗦 𝗔𝗥𝗘 𝗖𝗔𝗟𝗠<br>
+One of the nicest surprises in Don't Fall! Online is how much strategy hides inside the chaos. From the outside, it can look like a pure panic game where everyone is just sprinting until the floor gives up. But the better you play, the more you realize that survival is about reading the space properly. Where are the other players headed? Which section of the arena is already broken up? Which route keeps more escape options open? These small questions decide a lot.<br>
+That makes the game more satisfying than a pure reflex challenge. Reflexes matter, yes, but so does discipline. Sometimes the smartest move is not the fastest one. Sometimes the best decision is to stay closer to the center, preserve options, and force others to burn through their ground first. Sometimes it is worth cutting across a line to trap another player into a dead section. The game quietly rewards that kind of thinking, and that gives each round more life.<br>
+This is why every match feels a little different. The floor disappears in response to how people move, so the strategy is constantly changing.<br>
+⚔️ 𝗢𝗧𝗛𝗘𝗥 𝗣𝗟𝗔𝗬𝗘𝗥𝗦 𝗔𝗥𝗘 𝗡𝗢𝗧 𝗝𝗨𝗦𝗧 𝗖𝗢𝗠𝗣𝗘𝗧𝗜𝗧𝗜𝗢𝗡, 𝗧𝗛𝗘𝗬 𝗔𝗥𝗘 𝗣𝗔𝗥𝗧 𝗢𝗙 𝗧𝗛𝗘 𝗠𝗔𝗣<br>
+A very smart thing about Don't Fall! Online is how the other players reshape the match. They are not just rivals standing somewhere else on the board. Their movement actively changes the terrain around you. A section that looked safe a second ago may vanish because someone crossed it too early. A route that could have saved you may suddenly become useless because another player burned it away. This makes every opponent feel important even before direct confrontation becomes possible.<br>
+That is where the social tension of the game comes from. It is not always about bumping into each other physically. It is about who controls space better. Who wastes less ground. Who notices where the gaps are forming. Who manages to keep themselves near options while others are slowly boxed into disaster.<br>
+This kind of indirect competition is what makes hex survival games so addictive. You are always watching your own route, but you are also constantly reading everyone else’s mistakes and hoping to turn them into your advantage.<br>
+🗺️ 𝗗𝗜𝗙𝗙𝗘𝗥𝗘𝗡𝗧 𝗠𝗔𝗣𝗦 𝗠𝗘𝗔𝗡 𝗗𝗜𝗙𝗙𝗘𝗥𝗘𝗡𝗧 𝗦𝗨𝗥𝗩𝗜𝗩𝗔𝗟 𝗛𝗔𝗕𝗜𝗧𝗦<br>
+Map variety helps the game a lot because it keeps the same core rule from becoming repetitive. Different layouts, sizes, and terrain shapes force players to adapt. A wide map gives more room early, but can also create bigger isolation problems later. A tighter layout forces faster decisions and more aggressive routing. Some maps reward staying central. Others make edge play more viable for a while. That variation keeps your habits from becoming too lazy.<br>
+And because the matches are quick, every new map matters immediately. You do not spend ten minutes learning before the good part starts. The good part starts as soon as the floor begins disappearing and your plan is tested by the actual shape of the arena.<br>
+That kind of quick adaptation is one of the reasons the game stays fresh. The basic challenge remains familiar, but the way you solve it keeps shifting.<br>
+🎭 𝗦𝗞𝗜𝗡𝗦 𝗔𝗡𝗗 𝗟𝗘𝗔𝗗𝗘𝗥𝗕𝗢𝗔𝗥𝗗𝗦 𝗚𝗜𝗩𝗘 𝗧𝗛𝗘 𝗖𝗛𝗔𝗢𝗦 𝗔 𝗟𝗜𝗧𝗧𝗟𝗘 𝗠𝗢𝗥𝗘 𝗣𝗘𝗥𝗦𝗢𝗡𝗔𝗟𝗜𝗧𝗬<br>
+Cosmetics and rankings are a smart fit here. Unique skins help the game feel less disposable by giving you something personal to bring into each round. Even in a survival arcade game, looking distinct adds a bit of fun. It gives the chaos a tiny bit of identity. You are not just another body sprinting over hex tiles. You are your own brightly dressed disaster waiting to happen.<br>
+The leaderboard matters even more. It gives every round a reason to feel just slightly more serious. Not in a stressful way, but in that lovely “I know I can place higher than this” way. Once a game starts comparing your performance to other players, every decision carries a little more sting. Falling early feels worse. A clutch survival stretch feels better. A final win feels much, much better.<br>
+This is exactly what short online arcade games need. Fast rounds with just enough progression and pride attached to keep players coming back.<br>
+🎮 𝗘𝗔𝗦𝗬 𝗖𝗢𝗡𝗧𝗥𝗢𝗟𝗦 𝗠𝗘𝗔𝗡 𝗧𝗛𝗘 𝗚𝗔𝗠𝗘 𝗚𝗘𝗧𝗦 𝗧𝗢 𝗧𝗛𝗘 𝗙𝗨𝗡 𝗙𝗔𝗦𝗧<br>
+The controls are intentionally simple, and that is the right call. On computer, mouse movement handles the action. On mobile, touch controls do the same. That simplicity matters because the challenge should come from the arena, not from wrestling with the interface. When a game is built around constant movement, smooth control is everything.<br>
+It also makes Don't Fall! Online very easy to enter. New players understand the core loop almost instantly, which means the fun starts early. That accessibility is a big part of the appeal. You do not need a long tutorial to know what is happening. The floor disappears. Move. Stay alive. Done. From there, the strategy reveals itself naturally as you play more rounds.<br>
+</p>
+<h2>Developer</h2>  
+<p>
+Don't Fall! Online - Casual Game Game by kiz10.com
+</p>
+
+</div>
+<script>
+
+function openFullscreen(){
+
+var game=document.getElementById("gameBox");
+var btn=document.getElementById("fullscreenBtn");
+
+if(game.requestFullscreen){
+game.requestFullscreen();
+}else if(game.webkitRequestFullscreen){
+game.webkitRequestFullscreen();
+}else if(game.msRequestFullscreen){
+game.msRequestFullscreen();
+}
+
+btn.style.display="none";
+
+}
+
+document.addEventListener("fullscreenchange",function(){
+
+if(!document.fullscreenElement){
+document.getElementById("fullscreenBtn").style.display="block";
+}
+
+});
+
+</script>
+</body>
+</html>
